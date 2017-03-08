@@ -6,3 +6,11 @@ html, body{
 a.active {
   background-color: gray;
 }
+
+.example-form {
+  width: 500px;
+}
+
+.example-full-width {
+  width: 100%;
+}
