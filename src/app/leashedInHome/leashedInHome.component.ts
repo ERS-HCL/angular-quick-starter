@@ -8,7 +8,8 @@ import {
 import {
   MdSidenav,
   MdDialog,
-  MdDialogConfig} from '@angular/material';
+  MdDialogConfig
+} from '@angular/material';
 
 import { SettingsDialogComponent } from './settingsDialog.component';
 
@@ -47,7 +48,6 @@ export class LeashedInHomeComponent implements OnInit {
     console.log('hello `LeashedInHomeComponent` component');
     // this.title.getData().subscribe(data => this.data = data);
   }
-
 
   public openDialog() {
     const config = new MdDialogConfig();

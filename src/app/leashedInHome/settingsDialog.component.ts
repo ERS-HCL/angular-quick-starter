@@ -8,7 +8,7 @@ import {
 import {
   MdSidenav,
   MdDialog,
-  MdDialogConfig} from '@angular/material';
+  MdDialogConfig } from '@angular/material';
 
 @Component({
   selector: 'settings-dialog',
