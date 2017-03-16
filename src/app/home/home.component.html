@@ -15,10 +15,7 @@
 
     <form (ngSubmit)="submitState(localState.value)" autocomplete="off">
 
-      <input
-        [value]="localState.value"
-        (input)="localState.value = $event.target.value"
-        placeholder="Submit Local State to App State"
+      <input [value]="localState.value" (input)="localState.value = $event.target.value" placeholder="Submit Local State to App State"
         autofocus>
 
       <button>Submit Value</button>
@@ -32,6 +29,19 @@
 
     <pre>this.localState = {{ localState | json }}</pre>
 
+    <ul class="media-list">
+      <li class="media">
+        <div class="media-left">
+          <a href="#">
+            <img class="media-object" src="..." alt="...">
+          </a>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Media heading</h4>
+          ...
+        </div>
+      </li>
+    </ul>
   </div>
 
 </div>
