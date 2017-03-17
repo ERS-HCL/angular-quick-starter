@@ -16,5 +16,4 @@ import {
   templateUrl: './pricing-plans.component.html'
 })
 export class PricingPlansComponent {
-
 }
