@@ -1,0 +1,141 @@
+{
+    "plans": [{
+        "id": "Bronze",
+        "name": "Bronze",
+        "description": "Bronze Subscription Plan",
+        "offer": "1 month FREE trial",
+        "features": [
+            {
+                "id": "1",
+                "description": "User Accounts",
+                "available": "1",
+                "value": "2"
+            },
+            {
+                "id": "2",
+                "description": "User Projects",
+                "available": "1",
+                "value": "1"
+            },
+            {
+                "id": "3",
+                "description": "API Calls",
+                "available": "1",
+                "value": "100K"
+            },
+            {
+                "id": "4",
+                "description": "Storage",
+                "available": "1",
+                "value": "100 Mb"
+            },
+            {
+                "id": "5",
+                "description": "Custom Cloud Service",
+                "available": "0",
+                "value": ""
+            },
+            {
+                "id": "6",
+                "description": "Usage Reports",
+                "available": "1",
+                "value": "Weekly"
+            }
+        ],
+        "pricing": "$10",
+        "billing": "monthly"
+    },
+    {
+        "id": "Silver",
+        "name": "Silver",
+        "description": "Silver Subscription Plan",
+        "offer": "1 month FREE trial",
+        "features": [
+            {
+                "id": "1",
+                "description": "User Accounts",
+                "available": "1",
+                "value": "2"
+            },
+            {
+                "id": "2",
+                "description": "User Projects",
+                "available": "1",
+                "value": "5"
+            },
+            {
+                "id": "3",
+                "description": "API Calls",
+                "available": "1",
+                "value": "200K"
+            },
+            {
+                "id": "4",
+                "description": "Storage",
+                "available": "1",
+                "value": "200 Mb"
+            },
+            {
+                "id": "5",
+                "description": "Custom Cloud Service",
+                "available": "1",
+                "value": ""
+            },
+            {
+                "id": "6",
+                "description": "Usage Reports",
+                "available": "1",
+                "value": "Weekly"
+            }
+        ],
+        "pricing": "$20",
+        "billing": "monthly"
+    },
+     {
+        "id": "Gold",
+        "name": "Gold",
+        "description": "Gold Subscription Plan",
+        "offer": "1 month FREE trial",
+        "features": [
+            {
+                "id": "1",
+                "description": "User Accounts",
+                "available": "1",
+                "value": "5"
+            },
+            {
+                "id": "2",
+                "description": "User Projects",
+                "available": "1",
+                "value": "20"
+            },
+            {
+                "id": "3",
+                "description": "API Calls",
+                "available": "1",
+                "value": "300K"
+            },
+            {
+                "id": "4",
+                "description": "Storage",
+                "available": "1",
+                "value": "500 Mb"
+            },
+            {
+                "id": "5",
+                "description": "Custom Cloud Service",
+                "available": "1",
+                "value": ""
+            },
+            {
+                "id": "6",
+                "description": "Usage Reports",
+                "available": "1",
+                "value": "Weekly"
+            }
+        ],
+        "pricing": "$20",
+        "billing": "monthly"
+    }
+    ]
+}
