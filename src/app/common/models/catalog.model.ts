@@ -8,7 +8,7 @@ export interface Plan {
     offer: string;
     pricing: string;
     billing: string;
-    feature: Feature[];
+    features: Feature[];
 }
 
 export interface Feature {

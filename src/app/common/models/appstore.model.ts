@@ -5,4 +5,6 @@ import { Plan, Feature } from './catalog.model';
  */
 export interface AppStore {
     plans: Plan[]; // Online plans
+    features: Feature[]; // Online plan features
+    counter: number;
 };

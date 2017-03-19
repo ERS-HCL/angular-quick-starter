@@ -9,12 +9,10 @@ import { Observable } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 
 import { ADD_PLANS } from '../common/reducers/plan';
+import { Plan, Feature } from '../common/models/catalog.model';
+import { AppStore } from '../common/models/appstore.model';
 import { PlanService } from '../common/services/plan.service';
 import { Logger } from '../common/logging/default-log.service';
-
-interface AppState {
-    counter: number;
-}
 
 
 @Component({
@@ -29,14 +27,16 @@ interface AppState {
     // Every Angular template is first compiled by the browser before Angular runs it's compiler
     templateUrl: './pricing-home.component.html'
 })
-export class PricingHomeComponent {
+export class PricingHomeComponent implements OnInit {
     public counter: Observable<number>;
+    public plans: Observable<Array<Plan>>;
 
     constructor(
-        private store: Store<AppState>,
+        private store: Store<AppStore>,
         private logger: Logger,
         private planService: PlanService) {
         this.counter = store.select('counter');
+        this.plans = this.planService.plans;
     }
 
     public increment() {
@@ -49,6 +49,10 @@ export class PricingHomeComponent {
 
     public reset() {
         this.store.dispatch({ type: RESET });
+    }
+
+    public ngOnInit() {
+        this.loadPlans();
     }
 
     public loadPlans() {

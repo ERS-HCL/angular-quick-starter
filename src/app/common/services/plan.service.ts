@@ -5,7 +5,7 @@ import { Observer } from 'rxjs/Observer';
 
 import { Store } from '@ngrx/store';
 import { AppStore } from '../models/appstore.model';
-import { Plan } from '../models/catalog.model';
+import { Plan,Feature } from '../models/catalog.model';
 
 
 
@@ -15,16 +15,16 @@ import { Plan } from '../models/catalog.model';
  */
 @Injectable()
 export class PlanService {
-    public plans: Observable<Plan[]>;
+    public plans: Observable<Array<Plan>>;
 
      constructor(
         private http: Http,
         public store: Store<AppStore>
     ) {
-        this.plans = <Observable<Plan[]>> store.select('plans');
+        this.plans = <Observable<Array<Plan>>> store.select('plans');
     }
 
-     public loadPlans(): Observable<Plan[]> {
+     public loadPlans(): Observable<Array<Plan>> {
        return this.http.get(BASE_URL_PLANS)
             .map((res) => res.json())
             .catch(this.handleError);
