@@ -14,7 +14,7 @@ import { Plan } from '../models/catalog.model';
  *     getting the price list for online services
  */
 @Injectable()
-export class PlansService {
+export class PlanService {
     public plans: Observable<Plan[]>;
 
      constructor(

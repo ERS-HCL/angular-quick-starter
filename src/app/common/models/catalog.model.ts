@@ -17,3 +17,7 @@ export interface Feature {
     available: number;
     value: string;
 }
+
+export interface Plans {
+    plans: Plan[];
+}

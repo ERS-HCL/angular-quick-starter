@@ -38,6 +38,10 @@ import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { EffectsModule } from '@ngrx/effects';
 import { counterReducer } from './common/reducers/counter';
+import { planInitState, planReducer } from './common/reducers/plan';
+import { ConsoleLogService } from './common/logging/console-log.service';
+import { Logger } from './common/logging/default-log.service';
+import { PlanService } from './common/services/plan.service';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -45,7 +49,14 @@ import '../styles/headings.css';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  [
+    {
+      provide: Logger,
+      useClass: ConsoleLogService
+    }
+  ],
+  PlanService
 ];
 
 type StoreType = {
@@ -80,20 +91,17 @@ export function instrumentOptions() {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
- /*   StoreModule.provideStore(compose(
-      localStorageSync(['user'], true),
+    StoreModule.provideStore(
+      compose(
+      localStorageSync(['plans'], true),
       combineReducers
-    )({
-      user: userReducer,
-      products: productsReducer,
-      prices: pricesReducer,
-      cart: cartReducer,
-      tnc: tncReducer
-    }), {
-        user: initialUserState,
-        cart: initialCartState
-      }),*/
-    StoreModule.provideStore({ counter: counterReducer }),
+    )(
+      {
+        counter: counterReducer,
+        plans: planReducer
+      }), {
+        plans: planInitState
+      }),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule
 //    EffectsModule.run(UserEffects),
