@@ -150,7 +150,8 @@ module.exports = function (options) {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
-        }
+        },
+        'BASE_URL_PLANS': JSON.stringify('http://localhost:3001/plans/'),
       }),
 
       new DllBundlesPlugin({

@@ -3,6 +3,16 @@ import {
   OnInit
 } from '@angular/core';
 
+import { Store } from '@ngrx/store';
+import { INCREMENT, DECREMENT, RESET } from '../common/reducers/counter';
+import { Observable } from 'rxjs/Rx';
+import { Observer } from 'rxjs/Observer';
+
+interface AppState {
+  counter: number;
+}
+
+
 @Component({
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html
@@ -16,5 +26,21 @@ import {
   templateUrl: './pricing-home.component.html'
 })
 export class PricingHomeComponent {
+    public counter: Observable<number>;
 
+    constructor(private store: Store<AppState>){
+        this.counter = store.select('counter');
+    }
+
+    public increment() {
+        this.store.dispatch({ type: INCREMENT });
+    }
+
+    public decrement() {
+        this.store.dispatch({ type: DECREMENT });
+    }
+
+    public reset() {
+        this.store.dispatch({ type: RESET });
+    }
 }

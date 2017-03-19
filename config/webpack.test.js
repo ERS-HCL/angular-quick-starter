@@ -201,7 +201,8 @@ module.exports = function (options) {
           'ENV': JSON.stringify(ENV),
           'NODE_ENV': JSON.stringify(ENV),
           'HMR': false,
-        }
+        },
+        'BASE_URL_PLANS': JSON.stringify('http://localhost:3001/plans/'),
       }),
 
       /**

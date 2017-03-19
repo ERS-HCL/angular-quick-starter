@@ -31,6 +31,14 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
 
+import { Store, StoreModule, combineReducers } from '@ngrx/store';
+import { compose } from '@ngrx/core/compose';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { EffectsModule } from '@ngrx/effects';
+import { counterReducer } from './common/reducers/counter';
+
 import '../styles/styles.scss';
 import '../styles/headings.css';
 
@@ -45,6 +53,12 @@ type StoreType = {
   restoreInputValues: () => void,
   disposeOldHosts: () => void
 };
+
+export function instrumentOptions() {
+  return {
+    monitor: useLogMonitor({ visible: false, position: 'right' })
+  };
+}
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
@@ -65,7 +79,24 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+ /*   StoreModule.provideStore(compose(
+      localStorageSync(['user'], true),
+      combineReducers
+    )({
+      user: userReducer,
+      products: productsReducer,
+      prices: pricesReducer,
+      cart: cartReducer,
+      tnc: tncReducer
+    }), {
+        user: initialUserState,
+        cart: initialCartState
+      }),*/
+    StoreModule.provideStore({ counter: counterReducer }),
+    StoreDevtoolsModule.instrumentStore(instrumentOptions),
+    StoreLogMonitorModule
+//    EffectsModule.run(UserEffects),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
