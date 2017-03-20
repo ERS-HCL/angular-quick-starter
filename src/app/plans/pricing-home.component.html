@@ -2,113 +2,23 @@
     <div class="row">
         <div class="col-xs-12 col-sm-offset-4 col-sm-8">
             <div class="row">
-                <div class="col-xs-4 my_planHeader my_plan1">
-                    <div class="my_planTitle">Bronze</div>
-                    <div class="my_planPrice">$ 10</div>
-                    <div class="my_planDuration">per month</div>
-                    <a type="button" class="btn btn-default" [routerLink]=" ['/plans'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Buy</a>
-                </div>
-                <div class="col-xs-4 my_planHeader my_plan2">
-                    <div class="my_planTitle">Silver</div>
-                    <div class="my_planPrice">$ 20</div>
-                    <div class="my_planDuration">per month</div>
-                    <a type="button" class="btn btn-default" [routerLink]=" ['/plans'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Buy</a>
-                </div>
-                <div class="col-xs-4 my_planHeader my_plan3">
-                    <div class="my_planTitle">Gold</div>
-                    <div class="my_planPrice">$ 30</div>
-                    <div class="my_planDuration">per month</div>
+                <div class="col-xs-4 my_planHeader" [class.my_plan1]="i==0" [class.my_plan2]="i==1" [class.my_plan3]="i==2" *ngFor="let plan of plans | async;let i=index">
+                    <div class="my_planTitle">{{plan.name}}</div>
+                    <div class="my_planPrice">{{plan.pricing}}</div>
+                    <div class="my_planDuration">{{plan.billing === 'monthly' ? 'per month':'annual'}}</div>
                     <a type="button" class="btn btn-default" [routerLink]=" ['/plans'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Buy</a>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row my_featureRow">
+    <div class="row my_featureRow" *ngFor="let feature of features|async;">
         <div class="col-xs-12 col-sm-4 my_feature">
-            User Accounts
+            {{feature.description}}
         </div>
         <div class="col-xs-12 col-sm-8">
             <div class="row">
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan1">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan2">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan3">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row my_featureRow">
-        <div class="col-xs-12 col-sm-4 my_feature">
-            API Calls
-        </div>
-        <div class="col-xs-12 col-sm-8">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan1">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan2">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan3">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row my_featureRow">
-        <div class="col-xs-12 col-sm-4 my_feature">
-            Usage Reports
-        </div>
-        <div class="col-xs-12 col-sm-8">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan1">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan2">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan3">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-            </div>
-        </div>
-    </div>    
-    <div class="row my_featureRow">
-        <div class="col-xs-12 col-sm-4 my_feature">
-            Storage
-        </div>
-        <div class="col-xs-12 col-sm-8">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan1">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan2">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan3">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row my_featureRow">
-        <div class="col-xs-12 col-sm-4 my_feature">
-            Custom Cloud Service
-        </div>
-        <div class="col-xs-12 col-sm-8">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan1">
-                    <i class="fa"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan2">
-                    <i class="fa fa-check my_check"></i>
-                </div>
-                <div class="col-xs-4 col-sm-4 my_planFeature my_plan3">
-                    <i class="fa fa-check my_check"></i>
+                <div class="col-xs-4 col-sm-4 my_planFeature" [class.my_plan1]="j==0" [class.my_plan2]="j==1" [class.my_plan3]="j==2" *ngFor="let item of feature?.availability;let j=index">
+                    <i class="fa" [class.fa-check]="item.availability==1" [class.my_check]="item.availability==1"></i>
                 </div>
             </div>
         </div>

@@ -5,9 +5,7 @@ import { Observer } from 'rxjs/Observer';
 
 import { Store } from '@ngrx/store';
 import { AppStore } from '../models/appstore.model';
-import { Plan,Feature } from '../models/catalog.model';
-
-
+import { Plan, Feature, FeatureMap } from '../models/catalog.model';
 
 /**
  * PricingService for
@@ -15,17 +13,25 @@ import { Plan,Feature } from '../models/catalog.model';
  */
 @Injectable()
 export class PlanService {
-    public plans: Observable<Array<Plan>>;
+    public plans: Observable<Plan[]>;
+    public features: Observable<FeatureMap[]>;
 
      constructor(
         private http: Http,
         public store: Store<AppStore>
     ) {
-        this.plans = <Observable<Array<Plan>>> store.select('plans');
+        this.plans = <Observable<Plan[]>> store.select('plans');
+        this.features = <Observable<FeatureMap[]>> store.select('features');
     }
 
-     public loadPlans(): Observable<Array<Plan>> {
+     public loadPlans(): Observable<Plan[]> {
        return this.http.get(BASE_URL_PLANS)
+            .map((res) => res.json())
+            .catch(this.handleError);
+    }
+
+     public loadFeatures(): Observable<FeatureMap[]> {
+       return this.http.get(BASE_URL_FEATURES)
             .map((res) => res.json())
             .catch(this.handleError);
     }

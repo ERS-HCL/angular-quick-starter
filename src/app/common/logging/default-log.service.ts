@@ -1,14 +1,14 @@
 /**
  * Logging interface for log implementation
- */ 
+ */
 export interface ILogger {
-    assert( ...args: any[] ) : void;
-    error( ...args: any[] ) : void;
-    group( ...args: any[] ) : void;
-    groupEnd( ...args: any[] ) : void;
-    info( ...args: any[] ) : void;
-    log( ...args: any[] ) : void;
-    warn( ...args: any[] ) : void;
+    assert( ...args: any[] ): void;
+    error( ...args: any[] ): void;
+    group( ...args: any[] ): void;
+    groupEnd( ...args: any[] ): void;
+    info( ...args: any[] ): void;
+    log( ...args: any[] ): void;
+    warn( ...args: any[] ): void;
 }
 
 /**
@@ -19,31 +19,31 @@ export interface ILogger {
  */
 export class Logger implements ILogger {
 
-    public assert( ...args: any[] ) : void {
+    public assert( ...args: any[] ): void {
         // ... the default logger does no work.
     }
 
-    public error( ...args: any[] ) : void {
+    public error( ...args: any[] ): void {
         // ... the default logger does no work.
     }
 
-    public group( ...args: any[] ) : void {
+    public group( ...args: any[] ): void {
         // ... the default logger does no work.
     }
 
-    public groupEnd( ...args: any[] ) : void {
+    public groupEnd( ...args: any[] ): void {
         // ... the default logger does no work.
     }
 
-    public info( ...args: any[] ) : void {
+    public info( ...args: any[] ): void {
         // ... the default logger does no work.
     }
 
-    public log( ...args: any[] ) : void {
+    public log( ...args: any[] ): void {
         // ... the default logger does no work.
     }
 
-    public warn( ...args: any[] ) : void {
+    public warn( ...args: any[] ): void {
         // ... the default logger does no work.
     }
 

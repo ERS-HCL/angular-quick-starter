@@ -203,6 +203,7 @@ module.exports = function (options) {
           'HMR': false,
         },
         'BASE_URL_PLANS': JSON.stringify('http://localhost:3001/plans/'),
+        'BASE_URL_FEATURES': JSON.stringify('http://localhost:3001/features/'),
       }),
 
       /**

@@ -3,17 +3,18 @@ import {
     OnInit
 } from '@angular/core';
 
-import { Store } from '@ngrx/store';
+import { Store, Action } from '@ngrx/store';
 import { INCREMENT, DECREMENT, RESET } from '../common/reducers/counter';
 import { Observable } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 
 import { ADD_PLANS } from '../common/reducers/plan';
-import { Plan, Feature } from '../common/models/catalog.model';
+import { LOAD_FEATURES } from '../common/effects/features.effects';
+import { Plan, Feature, FeatureMap, FeatureAvailability } from '../common/models/catalog.model';
 import { AppStore } from '../common/models/appstore.model';
 import { PlanService } from '../common/services/plan.service';
 import { Logger } from '../common/logging/default-log.service';
-
+import * as _ from 'lodash';
 
 @Component({
     // The selector is what angular internally uses
@@ -29,7 +30,8 @@ import { Logger } from '../common/logging/default-log.service';
 })
 export class PricingHomeComponent implements OnInit {
     public counter: Observable<number>;
-    public plans: Observable<Array<Plan>>;
+    public plans: Observable<Plan[]>;
+    public features: Observable<FeatureMap[]>;
 
     constructor(
         private store: Store<AppStore>,
@@ -37,6 +39,7 @@ export class PricingHomeComponent implements OnInit {
         private planService: PlanService) {
         this.counter = store.select('counter');
         this.plans = this.planService.plans;
+        this.features = this.planService.features;
     }
 
     public increment() {
@@ -60,6 +63,7 @@ export class PricingHomeComponent implements OnInit {
             .map((payload) => ({ type: ADD_PLANS, payload }))
             .subscribe(
             (action) => {
+                this.store.dispatch(<Action> { type: LOAD_FEATURES });
                 this.store.dispatch(action);
             },
             (error) => {

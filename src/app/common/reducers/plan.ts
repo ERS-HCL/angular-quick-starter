@@ -1,11 +1,9 @@
 import { ActionReducer, Action } from '@ngrx/store';
-import { Plans,Plan } from '../models/catalog.model';
+import { Plan } from '../models/catalog.model';
 
 export const ADD_PLANS = 'ADD_PLANS';
 
-export const planInitState: Plans = {
-  plans: []
-};
+export const planInitState: Plan[] = [];
 
 export const planReducer: ActionReducer<Plan>
               = (state: any = [], action: Action) => {

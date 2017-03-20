@@ -18,6 +18,13 @@ export interface Feature {
     value: string;
 }
 
-export interface Plans {
-    plans: Plan[];
+export interface FeatureMap {
+    id?: string;
+    description?: string;
+    availability?: FeatureAvailability[];
+}
+
+export interface FeatureAvailability {
+    planId: string;
+    availability: number;
 }

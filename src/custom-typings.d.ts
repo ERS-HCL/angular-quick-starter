@@ -62,6 +62,7 @@ declare var HMR: boolean;
 declare var System: SystemJS;
 // Custom URLS
 declare var BASE_URL_PLANS: string;
+declare var BASE_URL_FEATURES: string;
 
 interface SystemJS {
   import: (path?: string) => Promise<any>;

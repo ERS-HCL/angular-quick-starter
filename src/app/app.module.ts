@@ -39,6 +39,8 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { EffectsModule } from '@ngrx/effects';
 import { counterReducer } from './common/reducers/counter';
 import { planInitState, planReducer } from './common/reducers/plan';
+import { featuresInitState, featuresReducer } from './common/reducers/features';
+import { FeaturesEffects } from './common/effects/features.effects';
 import { ConsoleLogService } from './common/logging/console-log.service';
 import { Logger } from './common/logging/default-log.service';
 import { PlanService } from './common/services/plan.service';
@@ -98,13 +100,15 @@ export function instrumentOptions() {
     )(
       {
         counter: counterReducer,
-        plans: planReducer
+        plans: planReducer,
+        features: featuresReducer
       }), {
-        plans: planInitState
+        plans: planInitState,
+        features: featuresInitState
       }),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
-    StoreLogMonitorModule
-//    EffectsModule.run(UserEffects),
+    StoreLogMonitorModule,
+    EffectsModule.run(FeaturesEffects),
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
