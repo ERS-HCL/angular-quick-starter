@@ -1,58 +1,8 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-md-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Bronze</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="the-price">
-                        <h1>
-                            $10<span class="subscript">/mo</span></h1>
-                        <small>1 month FREE trial</small>
-                    </div>
-                    <table class="table">
-                        <tr>
-                            <td>
-                                1 Account
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                1 Project
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                100K API Access
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                100MB Storage
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa fa-times" aria-hidden="true"></i> Custom Cloud Services
-                            </td>
-                        </tr>                        
-                        <tr class="active">
-                            <td>
-                                Weekly Reports
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="panel-footer">
-                    <a href="#" class="btn btn-success" role="button">Sign Up</a> 1 month FREE
-                    trial</div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-3">
-            <div class="panel panel-success">
-                <div class="cnrflash">
+        <div class="col-xs-12 col-md-3" *ngFor="let plan of plans|async;let i=index">
+            <div class="panel" [class.panel-primary]="i==0" [class.panel-success]="i==1" [class.panel-info]="i==2">
+                <div class="cnrflash" *ngIf="i==1">
                     <div class="cnrflash-inner">
                         <span class="cnrflash-label">MOST
                             <br>
@@ -61,100 +11,25 @@
                 </div>
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        Silver</h3>
+                        {{plan.name}}</h3>
                 </div>
                 <div class="panel-body">
                     <div class="the-price">
                         <h1>
-                            $20<span class="subscript">/mo</span></h1>
-                        <small>1 month FREE trial</small>
+                            {{plan.pricing}}<span class="subscript">{{plan.billing === 'monthly' ? '/mo':'annual'}}</span></h1>
+                        <small>{{plan.offer}}</small>
                     </div>
-                    <table class="table">
-                        <tr>
+                    <table class="table table-striped" >
+                        <tr *ngFor="let feature of plan.features">
                             <td>
-                                2 Account
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                5 Project
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                100K API Access
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                200MB Storage
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa fa-check" aria-hidden="true"></i> Custom Cloud Services
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                Weekly Reports
+                                <i class="fa fa-times" aria-hidden="true" *ngIf="feature.available === '0'"></i>
+                                 {{feature.value}} {{feature.description}}
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <a href="#" class="btn btn-success" role="button">Sign Up</a> 1 month FREE
-                    trial</div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-3">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Gold</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="the-price">
-                        <h1>
-                            $35<span class="subscript">/mo</span></h1>
-                        <small>1 month FREE trial</small>
-                    </div>
-                    <table class="table">
-                        <tr>
-                            <td>
-                                5 Account
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                20 Project
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                300K API Access
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                500MB Storage
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <i class="fa fa-check" aria-hidden="true"></i> Custom Cloud Services
-                            </td>
-                        </tr>
-                        <tr class="active">
-                            <td>
-                                Weekly Reports
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="panel-footer">
-                    <a href="#" class="btn btn-success" role="button">Sign Up</a> 1 month FREE
-                    trial</div>
+                    <a href="#" class="btn btn-success" role="button">Sign Up</a></div>
             </div>
         </div>
     </div>
