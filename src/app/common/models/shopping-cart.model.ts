@@ -10,5 +10,5 @@ export interface LineItem {
     id?: string;                        // line item id
     productName: string;                // product name 
     productId: string;                  // product id
-    unitPrice?: number;                 // product variant unit price
+    unitPrice?: string;                 // product variant unit price
 }
