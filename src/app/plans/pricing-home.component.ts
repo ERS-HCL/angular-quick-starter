@@ -55,7 +55,7 @@ export class PricingHomeComponent implements OnInit {
     }
 
     public ngOnInit() {
-        this.loadPlans();
+     //   this.loadPlans();
     }
 
     public loadPlans() {

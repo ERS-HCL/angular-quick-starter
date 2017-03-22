@@ -23,13 +23,14 @@
                         <tr *ngFor="let feature of plan.features">
                             <td>
                                 <i class="fa fa-times" aria-hidden="true" *ngIf="feature.available === '0'"></i>
+                                <i class="fa fa-check" aria-hidden="true" *ngIf="feature.available !== '0' && feature.description === 'Custom Cloud Service'"></i>
                                  {{feature.value}} {{feature.description}}
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <a href="#" class="btn btn-success" role="button">Sign Up</a></div>
+                    <a (click)="selectPlan(plan)" class="btn btn-success" role="button">Sign Up</a></div>
             </div>
         </div>
     </div>

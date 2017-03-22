@@ -40,6 +40,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { counterReducer } from './common/reducers/counter';
 import { planInitState, planReducer } from './common/reducers/plan';
 import { featuresInitState, featuresReducer } from './common/reducers/features';
+import { orderInitState, orderReducer } from './common/reducers/order';
+import { shoppingCartReducer } from './common/reducers/shopping-cart';
+import { userInitState, userReducer } from './common/reducers/user';
 import { FeaturesEffects } from './common/effects/features.effects';
 import { ConsoleLogService } from './common/logging/console-log.service';
 import { Logger } from './common/logging/default-log.service';
@@ -77,7 +80,7 @@ export function instrumentOptions() {
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
     AboutComponent,
@@ -95,16 +98,21 @@ export function instrumentOptions() {
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     StoreModule.provideStore(
       compose(
-      localStorageSync(['plans'], true),
-      combineReducers
-    )(
-      {
-        counter: counterReducer,
-        plans: planReducer,
-        features: featuresReducer
-      }), {
+        localStorageSync(['user'], true),
+        combineReducers
+      )(
+        {
+          plans: planReducer,
+          features: featuresReducer,
+          user: userReducer,
+          order: orderReducer,
+          shoppingCart: shoppingCartReducer,
+          counter: counterReducer
+        }), {
         plans: planInitState,
-        features: featuresInitState
+        features: featuresInitState,
+        user: userInitState,
+        order: orderInitState
       }),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule,
@@ -120,7 +128,7 @@ export class AppModule {
   constructor(
     public appRef: ApplicationRef,
     public appState: AppState
-  ) {}
+  ) { }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -148,7 +156,7 @@ export class AppModule {
     // recreate root elements
     store.disposeOldHosts = createNewHosts(cmpLocation);
     // save input values
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     // remove styles
     removeNgStyles();
   }

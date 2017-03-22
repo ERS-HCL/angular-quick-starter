@@ -6,8 +6,13 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
+import { Store, Action } from '@ngrx/store';
 import { AppState } from './app.service';
-
+import { PlanService } from './common/services/plan.service';
+import { ADD_PLANS } from './common/reducers/plan';
+import { LOAD_FEATURES } from './common/effects/features.effects';
+import { AppStore } from './common/models/appstore.model';
+import { Logger } from './common/logging/default-log.service';
 /*
  * App Component
  * Top Level Component
@@ -26,11 +31,32 @@ export class AppComponent implements OnInit {
   public url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState
-  ) {}
+    public appState: AppState,
+    public planService: PlanService,
+    private store: Store<AppStore>,
+    private logger: Logger
+  ) { }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    this.loadPlans();
+  }
+
+  public loadPlans() {
+    this.planService.loadPlans()
+      .map((payload) => ({ type: ADD_PLANS, payload }))
+      .subscribe(
+      (action) => {
+        this.store.dispatch(<Action> { type: LOAD_FEATURES });
+        this.store.dispatch(action);
+      },
+      (error) => {
+        this.logger.error('Unable to load plans: ' + error.message);
+      },
+      () => {
+        // called after success or error callback
+      }
+      );
   }
 
 }
