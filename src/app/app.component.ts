@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
   }
 
   public loadPlans() {
-    this.planService.loadPlans()
+    this.planService.loadPlans('bundle')
       .map((payload) => ({ type: ADD_PLANS, payload }))
       .subscribe(
       (action) => {

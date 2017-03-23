@@ -4,6 +4,7 @@
 export interface Plan {
     id: string;
     name: string;
+    type: string;
     description: string;
     offer: string;
     pricing: string;

@@ -24,8 +24,8 @@ export class PlanService {
         this.features = <Observable<FeatureMap[]>> store.select('features');
     }
 
-     public loadPlans(): Observable<Plan[]> {
-       return this.http.get(BASE_URL_PLANS)
+     public loadPlans(type: string): Observable<Plan[]> {
+       return this.http.get(BASE_URL_PLANS + '?type=' + type)
             .map((res) => res.json())
             .catch(this.handleError);
     }

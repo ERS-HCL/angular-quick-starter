@@ -115,6 +115,7 @@
             "name": "Bronze",
             "description": "Bronze Subscription Plan",
             "offer": "1 month FREE trial",
+            "type": "bundle",
             "features": [
                 {
                     "id": "1",
@@ -161,6 +162,7 @@
             "name": "Silver",
             "description": "Silver Subscription Plan",
             "offer": "1 month FREE trial",
+            "type": "bundle",
             "features": [
                 {
                     "id": "1",
@@ -207,6 +209,7 @@
             "name": "Gold",
             "description": "Gold Subscription Plan",
             "offer": "1 month FREE trial",
+            "type": "bundle",
             "features": [
                 {
                     "id": "1",
@@ -246,6 +249,26 @@
                 }
             ],
             "pricing": "$30",
+            "billing": "monthly"
+        },
+        {
+            "id": "HBO-Addon",
+            "name": "HBO",
+            "description": "Includes HBO GO®, HBO East,HBO Family East and HBO Latino",
+            "offer": "FREE for 7 days",
+            "type": "addon",
+            "features": [],
+            "pricing": "$5",
+            "billing": "monthly"
+        },
+        {
+            "id": "Starz-Addon",
+            "name": "Starz",
+            "description": "Includes STARZ East, Starz Kids & Family, and STARZ ENCORE East",
+            "offer": "FREE for 7 days",
+            "type": "addon",
+            "features": [],
+            "pricing": "$8",
             "billing": "monthly"
         }
     ]

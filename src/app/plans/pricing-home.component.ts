@@ -58,7 +58,7 @@ export class PricingHomeComponent implements OnInit {
      //   this.loadPlans();
     }
 
-    public loadPlans() {
+  /*  public loadPlans() {
         this.planService.loadPlans()
             .map((payload) => ({ type: ADD_PLANS, payload }))
             .subscribe(
@@ -73,5 +73,5 @@ export class PricingHomeComponent implements OnInit {
                 // called after success or error callback
             }
             );
-    }
+    }*/
 }
