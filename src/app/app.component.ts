@@ -73,6 +73,8 @@ export class AppComponent implements OnInit {
       lineItems: []
     };
     this.store.dispatch({ type: 'CREATE_CART', payload: cart });
+    // Demonstrate local storage sync
+    this.store.dispatch({ type: 'UPDATE_CARTID', payload: cart.id });
     return cart;
   }
 
