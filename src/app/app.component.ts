@@ -62,21 +62,19 @@ export class AppComponent implements OnInit {
       );
   }
 
-      /*   CART_EVENTS
-      *  Create Cart and add it to the user state
-      *  Call this when the user state does not have the cart existing
-      */
-    public initCart(): ShoppingCart {
-        //TODO: Call API to get cart ID from Cart Microservice
-        // for now generating our own ID  console.log(FingerPrintService.UUID()+'-'+new Date().getTime());
-        let cart: ShoppingCart;
-        cart = {
-            id: Utils.UUID() + '-' + new Date().getTime(),
-            lineItems: []
-        };
-        this.store.dispatch({ type: 'CREATE_CART', payload: cart });
-        return cart;
-    }
+  /*   CART_EVENTS
+  *  Create Cart and add it to the user state
+  *  Call this when the user state does not have the cart existing
+  */
+  public initCart(): ShoppingCart {
+    let cart: ShoppingCart;
+    cart = {
+      id: Utils.UUID() + '-' + new Date().getTime(),
+      lineItems: []
+    };
+    this.store.dispatch({ type: 'CREATE_CART', payload: cart });
+    return cart;
+  }
 
 }
 

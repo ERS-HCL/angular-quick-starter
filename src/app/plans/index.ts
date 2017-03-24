@@ -1,2 +1,2 @@
 export * from './pricing-home.component';
-export * from './pricing-plans.component';
+export * from './plans.module';

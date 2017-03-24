@@ -1,12 +1,10 @@
 import { ActionReducer, Action } from '@ngrx/store';
 import { ShoppingCart } from '../models/shopping-cart.model';
 
-
 export const CREATE_CART = 'CREATE_CART';
 export const ADD_ITEM = 'ADD_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
-
 
 export const shoppingCartReducer: ActionReducer<ShoppingCart>
     = (state: ShoppingCart = {}, action: Action) => {
@@ -16,7 +14,7 @@ export const shoppingCartReducer: ActionReducer<ShoppingCart>
             case ADD_ITEM:
                 let add = true;
                 state = Object.assign({}, state, {
-                    lineItems: (state.lineItems !== undefined) ? state.lineItems.map(lineItem => {
+                    lineItems: (state.lineItems !== undefined) ? state.lineItems.map((lineItem) => {
                         if (lineItem.productId === action.payload.productId) {
                             add = false; // This is already present
                         }

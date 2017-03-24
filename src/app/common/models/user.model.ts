@@ -12,6 +12,5 @@ export interface User {
     billingAddress?: Address;
     shippingAddress?: Address;
     orderId?: string;
+    cartId?: string;
 }
-
-

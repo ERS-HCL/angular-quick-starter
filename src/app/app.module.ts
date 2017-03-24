@@ -26,11 +26,10 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
 import { NavBarComponent } from './navbar';
-import { PricingHomeComponent, PricingPlansComponent } from './plans';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
-
+import { PricingHomeComponent } from './plans';
 import { Store, StoreModule, combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -86,10 +85,9 @@ export function instrumentOptions() {
     AboutComponent,
     HomeComponent,
     NavBarComponent,
-    PricingHomeComponent,
-    PricingPlansComponent,
     NoContentComponent,
-    XLargeDirective
+    XLargeDirective,
+    PricingHomeComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -116,7 +114,7 @@ export function instrumentOptions() {
       }),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule,
-    EffectsModule.run(FeaturesEffects),
+    EffectsModule.run(FeaturesEffects)
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,

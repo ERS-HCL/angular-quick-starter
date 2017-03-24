@@ -24,7 +24,7 @@ import { ADD_ITEM } from '../common/reducers/shopping-cart';
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './pricing-plans.component.html'
 })
-export class PricingPlansComponent {
+export class PricingPlansComponent implements OnInit {
   public plans: Observable<Plan[]>;
   constructor(
     private logger: Logger,
@@ -42,5 +42,9 @@ export class PricingPlansComponent {
     };
     this.store.dispatch(<Action> { type: ADD_ITEM, payload: lineItem });
 
+  }
+
+  public ngOnInit() {
+    console.log('Pricing Plans Loaded Asynchronously');
   }
 }
