@@ -154,7 +154,7 @@
                     "value": "Weekly"
                 }
             ],
-            "pricing": "$10",
+            "pricing": "10",
             "billing": "monthly"
         },
         {
@@ -201,7 +201,7 @@
                     "value": "Weekly"
                 }
             ],
-            "pricing": "$20",
+            "pricing": "20",
             "billing": "monthly"
         },
         {
@@ -248,7 +248,7 @@
                     "value": "Weekly"
                 }
             ],
-            "pricing": "$30",
+            "pricing": "30",
             "billing": "monthly"
         },
         {
@@ -258,7 +258,7 @@
             "offer": "FREE for 7 days",
             "type": "addon",
             "features": [],
-            "pricing": "$5",
+            "pricing": "5",
             "billing": "monthly"
         },
         {
@@ -268,7 +268,7 @@
             "offer": "FREE for 7 days",
             "type": "addon",
             "features": [],
-            "pricing": "$8",
+            "pricing": "8",
             "billing": "monthly"
         }
     ]

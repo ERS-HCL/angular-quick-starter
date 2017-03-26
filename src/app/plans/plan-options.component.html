@@ -16,7 +16,7 @@
                 <div class="panel-body">
                     <div class="the-price">
                         <h1>
-                            {{plan.pricing}}<span class="subscript">{{plan.billing === 'monthly' ? '/mo':'annual'}}</span></h1>
+                            {{plan.pricing | currency:'USD':true}}<span class="subscript">{{plan.billing === 'monthly' ? '/mo':'annual'}}</span></h1>
                         <small>{{plan.offer}}</small>
                     </div>
                     <table class="table table-striped" >
@@ -30,7 +30,8 @@
                     </table>
                 </div>
                 <div class="panel-footer">
-                    <a (click)="selectedPlan(plan)" class="btn btn-success" role="button">Sign Up</a></div>
+                    <a (click)="selectedPlan(plan)" class="btn btn-success" role="button">Add to Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+</a></div>
             </div>
         </div>
     </div>
