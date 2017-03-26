@@ -3,7 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {
   NgModule,
-  ApplicationRef
+  ApplicationRef,
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA
 } from '@angular/core';
 import {
   removeNgStyles,
@@ -25,11 +27,11 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { NavBarComponent } from './navbar';
+import { PlansModule } from './plans';
+import { CoreModule } from './core/core.module.ts';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 import { XLargeDirective } from './home/x-large';
-import { PricingHomeComponent } from './plans';
 import { Store, StoreModule, combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -84,15 +86,15 @@ export function instrumentOptions() {
     AppComponent,
     AboutComponent,
     HomeComponent,
-    NavBarComponent,
     NoContentComponent,
-    XLargeDirective,
-    PricingHomeComponent
+    XLargeDirective
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
+    CoreModule,
+    PlansModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     StoreModule.provideStore(
       compose(

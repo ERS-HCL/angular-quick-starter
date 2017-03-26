@@ -3,25 +3,26 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { PricingHomeComponent } from './pricing-home.component';
-import { PlansComponent } from './plans.component';
+import { routing } from './pricing-plans.routes';
+import { PricingPlansComponent } from './pricing-plans.component';
 import { PlanService } from '../common/services/plan.service';
+
+console.log('`Plans` bundle loaded asynchronously');
 
 @NgModule({
   declarations: [
     // Components / Directives/ Pipes
-    PricingHomeComponent,
-    PlansComponent
+    PricingPlansComponent
   ],
   exports: [
-      PricingHomeComponent,
-      PlansComponent
+      PricingPlansComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    routing
   ]
 })
-export class PlansModule {
+export class PricingPlansModule {
 }

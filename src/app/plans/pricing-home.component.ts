@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 
 import { Store, Action } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { INCREMENT, DECREMENT, RESET } from '../common/reducers/counter';
 import { Observable } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
@@ -23,8 +24,6 @@ import * as _ from 'lodash';
     selector: 'pricing-home',  // <home></home>
     // We need to tell Angular's Dependency Injection which providers are in our app.
     providers: [],
-    // Our list of styles in our component. We may add more to compose many styles together
-    styleUrls: ['./pricing-home.component.scss'],
     // Every Angular template is first compiled by the browser before Angular runs it's compiler
     templateUrl: './pricing-home.component.html'
 })
@@ -36,7 +35,8 @@ export class PricingHomeComponent implements OnInit {
     constructor(
         private store: Store<AppStore>,
         private logger: Logger,
-        private planService: PlanService) {
+        private planService: PlanService,
+        private router: Router) {
         this.counter = store.select('counter');
         this.plans = this.planService.plans;
         this.features = this.planService.features;
@@ -58,20 +58,9 @@ export class PricingHomeComponent implements OnInit {
      //   this.loadPlans();
     }
 
-  /*  public loadPlans() {
-        this.planService.loadPlans()
-            .map((payload) => ({ type: ADD_PLANS, payload }))
-            .subscribe(
-            (action) => {
-                this.store.dispatch(<Action> { type: LOAD_FEATURES });
-                this.store.dispatch(action);
-            },
-            (error) => {
-                this.logger.error('Unable to load plans: ' + error.message);
-            },
-            () => {
-                // called after success or error callback
-            }
-            );
-    }*/
+    public onSelectionEvent($event): void {
+        let plan: Plan = $event;
+        console.log(plan);
+        this.router.navigate(['/plans']);
+    }
 }
