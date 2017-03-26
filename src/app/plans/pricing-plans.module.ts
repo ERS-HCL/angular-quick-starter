@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { routing } from './pricing-plans.routes';
 import { PricingPlansComponent } from './pricing-plans.component';
+import { PlanOptionsComponent } from './plan-options.component';
 import { PlanService } from '../common/services/plan.service';
 
 console.log('`Plans` bundle loaded asynchronously');
@@ -12,10 +13,12 @@ console.log('`Plans` bundle loaded asynchronously');
 @NgModule({
   declarations: [
     // Components / Directives/ Pipes
-    PricingPlansComponent
+    PricingPlansComponent,
+    PlanOptionsComponent
   ],
   exports: [
-      PricingPlansComponent
+      PricingPlansComponent,
+      PlanOptionsComponent
   ],
   imports: [
     CommonModule,

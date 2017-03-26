@@ -20,7 +20,7 @@ import { ADD_ITEM } from '../common/reducers/shopping-cart';
   // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [],
   // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: ['./pricing-plans.component.scss'],
+  styleUrls: [],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './pricing-plans.component.html'
 })
@@ -33,7 +33,8 @@ export class PricingPlansComponent implements OnInit {
     this.plans = this.planService.plans;
   }
 
-  public selectPlan(plan: Plan): void {
+  public onSelectionEvent($event): void {
+    let plan: Plan = $event;
     console.log(plan);
     let lineItem: LineItem = <LineItem> {
       productId: plan.id,
@@ -41,7 +42,6 @@ export class PricingPlansComponent implements OnInit {
       unitPrice: plan.pricing
     };
     this.store.dispatch(<Action> { type: ADD_ITEM, payload: lineItem });
-
   }
 
   public ngOnInit() {
