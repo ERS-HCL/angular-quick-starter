@@ -1,6 +1,7 @@
 import {
     Component,
     OnInit,
+    OnChanges,
     Input
 } from '@angular/core';
 
@@ -21,12 +22,16 @@ import * as _ from 'lodash';
     // Every Angular template is first compiled by the browser before Angular runs it's compiler
     templateUrl: './cart-total.component.html'
 })
-export class CartTotalComponent {
+export class CartTotalComponent implements OnChanges {
     @Input() public items: LineItem[];
+    public price: number = 0;
 
     public getTotal() {
-        let price = 0;
-        price += _.reduce(this.items, (sum, v) => sum + Number(v.unitPrice), 0);
-        return price;
+        this.price = 0;
+        this.price += _.reduce(this.items, (sum, v) => sum + Number(v.unitPrice), 0);
+    }
+
+    public ngOnChanges(lineItem: any): void {
+      this.getTotal();
     }
 }
