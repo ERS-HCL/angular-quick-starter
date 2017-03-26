@@ -3,6 +3,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { CartComponent } from '../cart/cart.component';
+import { CartTotalComponent } from '../cart/cart-total.component';
+
 @NgModule({
     imports: [
         FormsModule,
@@ -12,9 +15,12 @@ import { RouterModule } from '@angular/router';
         ],
     declarations: [
         // ADD YOUR EXPORTED SHARED MODULE COMPONENTS
+        CartComponent,
+        CartTotalComponent
     ],
     exports: [
         // ADD YOUR EXPORTED SHARED MODULE COMPONENTS
+        CartComponent
     ]
 })
 
@@ -25,4 +31,4 @@ import { RouterModule } from '@angular/router';
  * eg. BreadcrumbComponent , ATT Shared library components
  * import shared module in corresponding module and use the component
  */
-export class SharedModule { }
+export class CartModule { }

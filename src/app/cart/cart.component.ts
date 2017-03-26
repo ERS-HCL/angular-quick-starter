@@ -5,7 +5,8 @@ import {
 
 import { Store, Action } from '@ngrx/store';
 import { Router } from '@angular/router';
-import { INCREMENT, DECREMENT, RESET } from '../common/reducers/counter';
+import { DELETE_ITEM } from '../common/reducers/shopping-cart';
+
 import { Observable } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 
@@ -34,5 +35,9 @@ export class CartComponent {
         private logger: Logger,
         private router: Router) {
         this.shoppingCart = store.select('shoppingCart');
+    }
+
+    public deleteItem(lineItem: LineItem) {
+       this.store.dispatch(<Action> { type: DELETE_ITEM, payload: lineItem });
     }
 }

@@ -1,0 +1,6 @@
+<tr class="visible-xs">
+    <td class="text-center"><strong>Total {{ getTotal() | currency:'USD':true}}</strong></td>
+</tr>
+<tr>
+    <td><a href="#" class="btn btn-success btn-block" [class.disabled]="getTotal() === 0">Checkout <i class="fa fa-angle-right"></i></a></td>
+</tr>
