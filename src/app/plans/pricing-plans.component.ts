@@ -39,6 +39,7 @@ export class PricingPlansComponent implements OnInit {
     let lineItem: LineItem = <LineItem> {
       productId: plan.id,
       productName: plan.name,
+      description: plan.description,
       unitPrice: plan.pricing
     };
     this.store.dispatch(<Action> { type: ADD_ITEM, payload: lineItem });
