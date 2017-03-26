@@ -42,7 +42,7 @@ export const shoppingCartReducer: ActionReducer<ShoppingCart>
                 state = Object.assign({}, state, {
                     lineItems: (state.lineItems !== undefined) ?
                         state.lineItems.filter((lineItem) => {
-                            return (lineItem.productId === action.payload.productId);
+                            return (lineItem.productId !== action.payload.productId);
                         }) : state
                 });
                 return state;

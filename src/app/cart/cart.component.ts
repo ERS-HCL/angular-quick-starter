@@ -38,6 +38,7 @@ export class CartComponent {
     }
 
     public deleteItem(lineItem: LineItem) {
+       console.log(lineItem);
        this.store.dispatch(<Action> { type: DELETE_ITEM, payload: lineItem });
     }
 }
