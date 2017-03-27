@@ -31,10 +31,6 @@ export const userReducer: ActionReducer<User>
                 return Object.assign({}, state, { cartId: action.payload });
             case UPDATE_ORDERID:
                 return Object.assign({}, state, { orderId: action.payload });
-            case UPDATE_BILLINGADDRESS:
-                return Object.assign({}, state, { billingAddress: action.payload });
-            case UPDATE_SHIPPINGADDRESS:
-                return Object.assign({}, state, { billingAddress: action.payload });
             default:
                 return state;
         }

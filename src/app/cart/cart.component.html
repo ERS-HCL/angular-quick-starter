@@ -31,7 +31,7 @@
 			</tr>
 		</tbody>
 		<tfoot>
-			<cart-total [items]="(shoppingCart|async)?.lineItems">
+			<cart-total [items]="(shoppingCart|async)?.lineItems" (checkOutEvent)="onCheckOut()">
 			</cart-total>
 		</tfoot>
 	</table>

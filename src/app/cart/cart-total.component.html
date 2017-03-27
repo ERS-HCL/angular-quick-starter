@@ -2,5 +2,5 @@
     <td class="text-center"><strong>Total {{ price | currency:'USD':true}}</strong></td>
 </tr>
 <tr>
-    <td><a href="#" class="btn btn-success btn-block" [class.disabled]="price === 0">Checkout <i class="fa fa-angle-right"></i></a></td>
+    <td><a class="btn btn-success btn-block" [class.disabled]="price === 0" (click)="checkOutClicked()">Checkout <i class="fa fa-angle-right"></i></a></td>
 </tr>

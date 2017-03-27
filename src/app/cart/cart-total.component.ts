@@ -2,7 +2,9 @@ import {
     Component,
     OnInit,
     OnChanges,
-    Input
+    Input,
+    Output,
+    EventEmitter
 } from '@angular/core';
 
 import { Observable } from 'rxjs/Rx';
@@ -24,6 +26,8 @@ import * as _ from 'lodash';
 })
 export class CartTotalComponent implements OnChanges {
     @Input() public items: LineItem[];
+    @Output() public checkOutEvent = new EventEmitter();
+
     public price: number = 0;
 
     public getTotal() {
@@ -32,6 +36,10 @@ export class CartTotalComponent implements OnChanges {
     }
 
     public ngOnChanges(lineItem: any): void {
-      this.getTotal();
+        this.getTotal();
+    }
+
+    public checkOutClicked(): void {
+        this.checkOutEvent.emit();
     }
 }

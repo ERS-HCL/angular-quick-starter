@@ -41,4 +41,8 @@ export class CartComponent {
        console.log(lineItem);
        this.store.dispatch(<Action> { type: DELETE_ITEM, payload: lineItem });
     }
+
+    public onCheckOut() {
+        this.router.navigate(['/register']);
+    }
 }

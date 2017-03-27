@@ -18,7 +18,12 @@ import { Observable } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/debounceTime';
 
+import { Store, Action } from '@ngrx/store';
+import { AppStore } from '../common/models/appstore.model';
+import { Logger } from '../common/logging/default-log.service';
+
 import { User } from '../common/models/user';
+import { UPDATE_USER } from '../common/reducers/user';
 
 import * as _ from 'lodash';
 
@@ -67,7 +72,9 @@ export class RegisterComponent implements OnInit {
         pattern: 'Please enter a valid email address.'
     };
 
-    constructor(private fb: FormBuilder) { }
+    constructor(private fb: FormBuilder,
+                private logger: Logger,
+                private store: Store<AppStore>) { }
 
     public ngOnInit(): void {
         this.customerForm = this.fb.group({
@@ -118,6 +125,7 @@ export class RegisterComponent implements OnInit {
 
     public save(): void {
         console.log('Saved: ' + JSON.stringify(this.customerForm.value));
+        this.store.dispatch(<Action> { type: UPDATE_USER, payload: this.customerForm.value });
     }
 
     public setMessage(c: AbstractControl): void {
