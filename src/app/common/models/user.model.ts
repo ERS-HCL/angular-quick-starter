@@ -7,10 +7,12 @@ export interface User {
     id?: number;
     firstName?: string;
     lastName?: string;
-    phoneNumber?: string;
-    companyName?: string;
-    billingAddress?: Address;
-    shippingAddress?: Address;
+    email?: string;
+    phone?: string;
+    notification?: string;
+    rating?: number;
+    sendCatalog?: boolean;
+    addresses?: Address[];
     orderId?: string;
     cartId?: string;
 }

@@ -4,7 +4,7 @@ export const userInitState: User = {
     id: 0,
     firstName: '',
     lastName: '',
-    phoneNumber: ''
+    phone: ''
 };
 
 export const ADD_USER = 'ADD_USER';
