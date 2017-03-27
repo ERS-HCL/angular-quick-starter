@@ -6,12 +6,13 @@ import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 
 import { DataResolver } from './app.resolver';
+import { RegisterGuard } from './common/guards/register.guard';
 
 export const ROUTES: Routes = [
   { path: '',      component: PricingHomeComponent },
   { path: 'home',  component: PricingHomeComponent },
   { path: 'plans', loadChildren: './plans#PricingPlansModule' },
-  { path: 'register', loadChildren: './register#RegisterModule' },
+  { path: 'register', canActivate: [ RegisterGuard ], loadChildren: './register#RegisterModule' },
   { path: 'about', component: AboutComponent },
   { path: 'detail', loadChildren: './+detail#DetailModule'},
   { path: 'barrel', loadChildren: './+barrel#BarrelModule'},

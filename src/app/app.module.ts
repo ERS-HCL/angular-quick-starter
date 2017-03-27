@@ -49,6 +49,9 @@ import { FeaturesEffects } from './common/effects/features.effects';
 import { ConsoleLogService } from './common/logging/console-log.service';
 import { Logger } from './common/logging/default-log.service';
 import { PlanService } from './common/services/plan.service';
+import { AppStateService } from './common/services/app-state.service';
+
+import { RegisterGuard } from './common/guards/register.guard';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -63,7 +66,9 @@ const APP_PROVIDERS = [
       useClass: ConsoleLogService
     }
   ],
-  PlanService
+  PlanService,
+  AppStateService,
+  RegisterGuard
 ];
 
 type StoreType = {
