@@ -5,8 +5,7 @@ export const ADD_FEATURES = 'ADD_FEATURES';
 
 export const featuresInitState: FeatureMap[] = [];
 
-export const featuresReducer: ActionReducer<FeatureMap>
-  = (state: any = [], action: Action) => {
+export function featuresReducer(state: FeatureMap[] = [], action: Action): FeatureMap {
     switch (action.type) {
       case ADD_FEATURES:
         return action.payload;

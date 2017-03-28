@@ -5,8 +5,7 @@ export const ADD_PLANS = 'ADD_PLANS';
 
 export const planInitState: Plan[] = [];
 
-export const planReducer: ActionReducer<Plan>
-              = (state: any = [], action: Action) => {
+export function planReducer(state: Plan[] = [], action: Action): Plan[] {
   switch (action.type) {
     case ADD_PLANS:
       return action.payload;

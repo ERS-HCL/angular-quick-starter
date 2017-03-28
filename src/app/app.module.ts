@@ -83,6 +83,26 @@ export function instrumentOptions() {
   };
 }
 
+const reducers = {
+          plans: planReducer,
+          features: featuresReducer,
+          user: userReducer,
+          order: orderReducer,
+          shoppingCart: shoppingCartReducer,
+          counter: counterReducer
+        };
+const initialReducerState = {
+        plans: planInitState,
+        features: featuresInitState,
+        user: userInitState,
+        order: orderInitState
+      };
+const appReducer = compose(localStorageSync(['user'], true), combineReducers)(reducers);
+
+export function rootReducer(state: any, action: any) {
+  return appReducer(state, action);
+}
+
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
@@ -103,24 +123,7 @@ export function instrumentOptions() {
     CoreModule,
     PlansModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
-    StoreModule.provideStore(
-      compose(
-        localStorageSync(['user'], true),
-        combineReducers
-      )(
-        {
-          plans: planReducer,
-          features: featuresReducer,
-          user: userReducer,
-          order: orderReducer,
-          shoppingCart: shoppingCartReducer,
-          counter: counterReducer
-        }), {
-        plans: planInitState,
-        features: featuresInitState,
-        user: userInitState,
-        order: orderInitState
-      }),
+    StoreModule.provideStore(rootReducer, initialReducerState),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule,
     EffectsModule.run(FeaturesEffects)

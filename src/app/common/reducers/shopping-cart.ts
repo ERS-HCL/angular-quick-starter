@@ -6,8 +6,7 @@ export const ADD_ITEM = 'ADD_ITEM';
 export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 
-export const shoppingCartReducer: ActionReducer<ShoppingCart>
-    = (state: ShoppingCart = {}, action: Action) => {
+export function shoppingCartReducer(state: ShoppingCart = {}, action: Action): ShoppingCart {
         switch (action.type) {
             case CREATE_CART:
                 return Object.assign({}, state, action.payload);

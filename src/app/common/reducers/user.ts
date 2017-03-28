@@ -16,8 +16,7 @@ export const UPDATE_CARTID = 'UPDATE_CARTID';
 export const UPDATE_BILLINGADDRESS = 'UPDATE_BILLINGADDRESS';
 export const UPDATE_SHIPPINGADDRESS = 'UPDATE_SHIPPINGADDRESS';
 
-export const userReducer: ActionReducer<User>
-    = (state: User = {}, action: Action) => {
+export function userReducer(state: User = {}, action: Action): User {
         switch (action.type) {
             case ADD_USER:
                 return Object.assign({}, state, action.payload);

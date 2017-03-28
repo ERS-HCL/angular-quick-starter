@@ -10,8 +10,7 @@ export const UPDATE_ORDERID = 'UPDATE_ORDERID';
 export const UPDATE_BILLINGADDRESS = 'UPDATE_BILLINGADDRESS';
 export const UPDATE_SHIPPINGADDRESS = 'UPDATE_SHIPPINGADDRESS';
 
-export const orderReducer: ActionReducer<Order>
-    = (state: Order = {}, action: Action) => {
+export function orderReducer(state: Order = {}, action: Action): Order {
         switch (action.type) {
             case ADD_ORDER:
                 return Object.assign({}, state, action.payload);
