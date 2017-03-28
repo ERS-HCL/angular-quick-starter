@@ -8,10 +8,10 @@ import { Plan, Feature, FeatureMap, FeatureAvailability } from '../common/models
 
 @Component({
   selector: 'plan-details',
-  templateUrl: './plans.component.html',
-  styleUrls: ['./plans.component.scss']
+  templateUrl: './plan-details.component.html',
+  styleUrls: ['./plan-details.component.scss']
 })
-export class PlansComponent {
+export class PlanDetailsComponent {
   @Input() public plans: Plan[];
   @Input() public features: FeatureMap[];
   @Output() public selectionEvent = new EventEmitter();

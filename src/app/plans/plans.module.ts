@@ -4,23 +4,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { PricingHomeComponent } from './pricing-home.component';
-import { PlansComponent } from './plans.component';
+import { PlanDetailsComponent } from './plan-details.component';
 import { PlanService } from '../common/services/plan.service';
+import { CarouselModule } from 'ng2-bootstrap/carousel';
 
 @NgModule({
   declarations: [
     // Components / Directives/ Pipes
     PricingHomeComponent,
-    PlansComponent
+    PlanDetailsComponent
   ],
   exports: [
       PricingHomeComponent,
-      PlansComponent
+      PlanDetailsComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    CarouselModule.forRoot()
   ]
 })
 export class PlansModule {
