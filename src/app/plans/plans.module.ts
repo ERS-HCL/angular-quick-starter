@@ -6,7 +6,6 @@ import { SharedModule } from '../shared/shared.module';
 import { PricingHomeComponent } from './pricing-home.component';
 import { PlanDetailsComponent } from './plan-details.component';
 import { PlanService } from '../common/services/plan.service';
-import { CarouselModule } from 'ng2-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,7 @@ import { CarouselModule } from 'ng2-bootstrap/carousel';
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule,
-    CarouselModule.forRoot()
+    SharedModule
   ]
 })
 export class PlansModule {

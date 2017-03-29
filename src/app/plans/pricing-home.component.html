@@ -1,17 +1,4 @@
 <div class="container">
-    <div class="row">
-        <carousel>
-            <slide>
-                <img class="img-responsive" src="http://lorempixel.com/1200/250/business/1" alt="First slide">
-            </slide>
-            <slide>
-                <img class="img-responsive" src="http://lorempixel.com/1200/250/business/2" alt="Second slide">
-            </slide>
-            <slide>
-                <img class="img-responsive" src="http://lorempixel.com/1200/250/business/3" alt="Third slide">
-            </slide>
-        </carousel>
-    </div>
     <plan-details [plans]="plans | async" [features]="features | async" (selectionEvent)="onSelectionEvent($event)"></plan-details>
     <div class="row">
         <div class="panel panel-default">
