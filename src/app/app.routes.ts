@@ -13,6 +13,7 @@ export const ROUTES: Routes = [
   { path: 'home',  component: PricingHomeComponent },
   { path: 'plans', loadChildren: './plans#PricingPlansModule' },
   { path: 'register', canActivate: [ RegisterGuard ], loadChildren: './register#RegisterModule' },
+  { path: 'summary', loadChildren: './cart#CartSummaryModule' },
   { path: 'about', component: AboutComponent },
   { path: 'detail', loadChildren: './+detail#DetailModule'},
   { path: 'barrel', loadChildren: './+barrel#BarrelModule'},

@@ -13,7 +13,7 @@ import {
     ValidatorFn,
     FormArray
 } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { Observer } from 'rxjs/Observer';
 import 'rxjs/add/operator/debounceTime';
@@ -74,7 +74,8 @@ export class RegisterComponent implements OnInit {
 
     constructor(private fb: FormBuilder,
                 private logger: Logger,
-                private store: Store<AppStore>) { }
+                private store: Store<AppStore>,
+                private router: Router) { }
 
     public ngOnInit(): void {
         this.customerForm = this.fb.group({
@@ -126,6 +127,7 @@ export class RegisterComponent implements OnInit {
     public save(): void {
         console.log('Saved: ' + JSON.stringify(this.customerForm.value));
         this.store.dispatch(<Action> { type: UPDATE_USER, payload: this.customerForm.value });
+        this.router.navigate(['/summary']);
     }
 
     public setMessage(c: AbstractControl): void {
