@@ -29,7 +29,7 @@ export function userReducer(state: User = {}, action: Action): User {
             case INIT_USER:
                 return userInitState;
             case UPDATE_UUID:
-                return Object.assign({}, state, { UUID: action.payload });
+                return Object.assign({}, state, action.payload);
             case RESET_UUID:
                 return Object.assign({}, state, { UUID: '' });
             case UPDATE_CARTID:

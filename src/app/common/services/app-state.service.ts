@@ -2,7 +2,8 @@ import { Injectable, Inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../models/appstore.model';
 import { Utils } from '../utils';
-import { UPDATE_UUID,RESET_UUID } from '../reducers/user';
+import { User } from '../models/user.model';
+import { UPDATE_UUID, RESET_UUID } from '../reducers/user';
 
 @Injectable()
 export class AppStateService {
@@ -20,9 +21,12 @@ export class AppStateService {
   /**
    * Initialize UUID
    */
-  public initUUID(): void {
-    let UUID = Utils.UUID() + '-' + new Date().getTime();
-    this.store.dispatch({ type: UPDATE_UUID, payload: UUID });
+  public initUUID(timer: number): void {
+    let uuid = Utils.UUID() + '-' + new Date().getTime();
+    let expiryDate: Date = new Date(new Date().getTime() + (timer));
+    let userPayload = <User> { UUID: uuid, expiry: expiryDate};
+    console.log(userPayload);
+    this.store.dispatch({ type: UPDATE_UUID, payload: userPayload});
   }
 
   public resetUUID(): void {

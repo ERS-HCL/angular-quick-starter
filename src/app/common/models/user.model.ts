@@ -16,4 +16,5 @@ export interface User {
     orderId?: string;
     cartId?: string;
     UUID?: string;
+    expiry?: Date;
 }

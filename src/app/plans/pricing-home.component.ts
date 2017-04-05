@@ -36,6 +36,7 @@ export class PricingHomeComponent implements OnInit {
     public features: Observable<FeatureMap[]>;
     public timeout: number;
     public message: string;
+   // public expiryDate: Date;
 
     constructor(
         private store: Store<AppStore>,
@@ -48,18 +49,18 @@ export class PricingHomeComponent implements OnInit {
         this.plans = this.planService.plans;
         this.features = this.planService.features;
         this.timeout = 5000;
-
         this.user
+            // filter only the situation where the UUID has been set in the store
             .filter((user: User) => user.UUID !== '')
-            .map((user: User) => Observable.timer(this.timeout))
-            .do((x: any) => { this.message = 'UUID changed! Timer has been reset to '
-                                + this.timeout + 'msecs'; } )
+            .map((user: User) => Observable.timer(user.expiry))
+            .do((x: any) => { this.message = 'UUID changed! Timer has been reset .. '; } )
             // Ignore earlier timers and switch to the new timer
             .switch()
             // Timeout has expired so reset the UUID and logout the user
             .subscribe((x) => {
                 this.message = 'UUID has now expired! Dispatching UUID reset event';
                 this.appStateService.resetUUID();
+                alert('UUID has now expired! please login');
             });
     }
 
@@ -85,13 +86,12 @@ export class PricingHomeComponent implements OnInit {
         this.router.navigate(['/plans']);
     }
 
-    public startTimer(timer: number) {
-        this.setUUID();
-        console.log(timer);
+    public startTimer() {
+        this.setUUID(this.timeout);
     }
 
-    public setUUID() {
-        this.appStateService.initUUID();
+    public setUUID(timer: number) {
+        this.appStateService.initUUID(timer);
     }
 
 }

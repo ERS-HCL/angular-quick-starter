@@ -5,9 +5,10 @@
             <div class="panel-body">
                 <strong>UUID:</strong><br>{{(user | async)?.UUID}}<br>
                 <strong>Timer Message:</strong><br>{{ message }}<br>
-               <form #f="ngForm" novalidate (ngSubmit)="startTimer(f.value)">
+                <strong>Expiry Date:</strong><br>{{ ((user | async)?.expiry) | date:'medium' }}<br>
+               <form #f="ngForm" novalidate (ngSubmit)="startTimer()">
                     <div class="form-group">
-                        <label>Time out</label>
+                        <label>Time out offset</label>
                         <input type="number" class="form-control" name="timeout" [(ngModel)]="timeout" #vartimeout="ngModel" required min="2000">
                         <small [hidden]="vartimeout.valid || (vartimeout.pristine && !f.submitted)" class="text-danger"> Number is required. </small>
                     </div>
