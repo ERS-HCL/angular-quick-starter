@@ -13,7 +13,9 @@ import { ADD_PLANS } from '../common/reducers/plan';
 import { LOAD_FEATURES } from '../common/effects/features.effects';
 import { Plan, Feature, FeatureMap, FeatureAvailability } from '../common/models/catalog.model';
 import { AppStore } from '../common/models/appstore.model';
+import { User } from '../common/models/user.model';
 import { PlanService } from '../common/services/plan.service';
+import { AppStateService } from '../common/services/app-state.service';
 import { Logger } from '../common/logging/default-log.service';
 import * as _ from 'lodash';
 
@@ -29,17 +31,36 @@ import * as _ from 'lodash';
 })
 export class PricingHomeComponent implements OnInit {
     public counter: Observable<number>;
+    public user: Observable<User>;
     public plans: Observable<Plan[]>;
     public features: Observable<FeatureMap[]>;
+    public timeout: number;
+    public message: string;
 
     constructor(
         private store: Store<AppStore>,
         private logger: Logger,
         private planService: PlanService,
+        private appStateService: AppStateService,
         private router: Router) {
         this.counter = store.select('counter');
+        this.user = store.select('user');
         this.plans = this.planService.plans;
         this.features = this.planService.features;
+        this.timeout = 5000;
+
+        this.user
+            .filter((user: User) => user.UUID !== '')
+            .map((user: User) => Observable.timer(this.timeout))
+            .do((x: any) => { this.message = 'UUID changed! Timer has been reset to '
+                                + this.timeout + 'msecs'; } )
+            // Ignore earlier timers and switch to the new timer
+            .switch()
+            // Timeout has expired so reset the UUID and logout the user
+            .subscribe((x) => {
+                this.message = 'UUID has now expired! Dispatching UUID reset event';
+                this.appStateService.resetUUID();
+            });
     }
 
     public increment() {
@@ -63,4 +84,14 @@ export class PricingHomeComponent implements OnInit {
         console.log(plan);
         this.router.navigate(['/plans']);
     }
+
+    public startTimer(timer: number) {
+        this.setUUID();
+        console.log(timer);
+    }
+
+    public setUUID() {
+        this.appStateService.initUUID();
+    }
+
 }

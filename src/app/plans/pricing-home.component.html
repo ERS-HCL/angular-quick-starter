@@ -1,4 +1,21 @@
 <div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Time out</div>
+            <div class="panel-body">
+                <strong>UUID:</strong><br>{{(user | async)?.UUID}}<br>
+                <strong>Timer Message:</strong><br>{{ message }}<br>
+               <form #f="ngForm" novalidate (ngSubmit)="startTimer(f.value)">
+                    <div class="form-group">
+                        <label>Time out</label>
+                        <input type="number" class="form-control" name="timeout" [(ngModel)]="timeout" #vartimeout="ngModel" required min="2000">
+                        <small [hidden]="vartimeout.valid || (vartimeout.pristine && !f.submitted)" class="text-danger"> Number is required. </small>
+                    </div>
+                    <button type="submit" class="btn btn-default" [disabled]="!f.valid">Set new UUID</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <plan-details [plans]="plans | async" [features]="features | async" (selectionEvent)="onSelectionEvent($event)"></plan-details>
     <div class="row">
         <div class="panel panel-default">

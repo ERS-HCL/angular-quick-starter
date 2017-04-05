@@ -15,4 +15,5 @@ export interface User {
     addresses?: Address[];
     orderId?: string;
     cartId?: string;
+    UUID?: string;
 }
