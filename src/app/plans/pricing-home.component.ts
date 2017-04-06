@@ -17,6 +17,7 @@ import { User } from '../common/models/user.model';
 import { PlanService } from '../common/services/plan.service';
 import { AppStateService } from '../common/services/app-state.service';
 import { Logger } from '../common/logging/default-log.service';
+import { CookieService } from 'ng2-cookies';
 import * as _ from 'lodash';
 
 @Component({
@@ -36,24 +37,34 @@ export class PricingHomeComponent implements OnInit {
     public features: Observable<FeatureMap[]>;
     public timeout: number;
     public message: string;
-   // public expiryDate: Date;
+    // public expiryDate: Date;
+    public cookies: Object;
+    public keys: string[];
+    public cName: string;
+    public cValue: string;
+    public cValue2: string;
+    public rName: string;
+    public checkName: string;
 
     constructor(
         private store: Store<AppStore>,
         private logger: Logger,
         private planService: PlanService,
         private appStateService: AppStateService,
-        private router: Router) {
+        private router: Router,
+        private cookieService: CookieService) {
         this.counter = store.select('counter');
         this.user = store.select('user');
         this.plans = this.planService.plans;
         this.features = this.planService.features;
         this.timeout = 5000;
+        this.cValue2 = '';
+        this.update();
         this.user
             // filter only the situation where the UUID has been set in the store
             .filter((user: User) => user.UUID !== '')
             .map((user: User) => Observable.timer(user.expiry))
-            .do((x: any) => { this.message = 'UUID changed! Timer has been reset .. '; } )
+            .do((x: any) => { this.message = 'UUID changed! Timer has been reset .. '; })
             // Ignore earlier timers and switch to the new timer
             .switch()
             // Timeout has expired so reset the UUID and logout the user
@@ -77,7 +88,7 @@ export class PricingHomeComponent implements OnInit {
     }
 
     public ngOnInit() {
-     //   this.loadPlans();
+        //   this.loadPlans();
     }
 
     public onSelectionEvent($event): void {
@@ -94,4 +105,37 @@ export class PricingHomeComponent implements OnInit {
         this.appStateService.initUUID(timer);
     }
 
+    public update() {
+        this.cookies = this.cookieService.getAll();
+        this.keys = Object.keys(this.cookies);
+    }
+    public addCookie(cName: string, cValue: string) {
+        console.log('Adding: ', cName, cValue);
+        this.cookieService.set(cName, cValue);
+        this.update();
+    }
+    public removeCookie(rName: string) {
+        console.log('Removing: ', rName);
+        this.cookieService.delete(rName);
+        this.update();
+    }
+    public removeAll() {
+        console.log('Removing all cookies');
+        this.cookieService.deleteAll();
+        this.update();
+    }
+
+    public checkCookie() {
+        console.log('Checking: ', this.checkName);
+        this.cValue2 = '';
+        let result: boolean = this.cookieService.check(this.checkName);
+        console.log(this.cookieService.check(this.checkName));
+        if (result) {
+            this.cValue2 = 'Value: ' + this.cookieService.get(this.checkName);
+        } else {
+            this.cValue2 = 'Cookie with name: ' + this.checkName + ' not found';
+        }
+     //   window.alert('Check cookie ' + this.checkName +
+     //        ' returned ' + this.cookieService.check(this.checkName));
+    }
 }
