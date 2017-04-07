@@ -17,7 +17,7 @@ import { User } from '../common/models/user.model';
 import { PlanService } from '../common/services/plan.service';
 import { AppStateService } from '../common/services/app-state.service';
 import { Logger } from '../common/logging/default-log.service';
-import { CookieService } from 'ng2-cookies';
+import { CookieService } from 'angular2-cookie/core';
 import * as _ from 'lodash';
 
 @Component({
@@ -111,31 +111,29 @@ export class PricingHomeComponent implements OnInit {
     }
     public addCookie(cName: string, cValue: string) {
         console.log('Adding: ', cName, cValue);
-        this.cookieService.set(cName, cValue);
+        this.cookieService.put(cName, cValue);
         this.update();
     }
     public removeCookie(rName: string) {
         console.log('Removing: ', rName);
-        this.cookieService.delete(rName);
+        this.cookieService.remove(rName);
         this.update();
     }
     public removeAll() {
         console.log('Removing all cookies');
-        this.cookieService.deleteAll();
+        this.cookieService.removeAll();
         this.update();
     }
 
-    public checkCookie() {
-        console.log('Checking: ', this.checkName);
+    public checkCookie(checkName: string) {
+        console.log('Checking: ', checkName);
         this.cValue2 = '';
-        let result: boolean = this.cookieService.check(this.checkName);
-        console.log(this.cookieService.check(this.checkName));
-        if (result) {
-            this.cValue2 = 'Value: ' + this.cookieService.get(this.checkName);
+        let result: any = this.cookieService.get(checkName);
+      //  console.log(result);
+        if (result !== undefined) {
+            this.cValue2 = 'Value: ' + result;
         } else {
-            this.cValue2 = 'Cookie with name: ' + this.checkName + ' not found';
+            this.cValue2 = 'Cookie with name: ' + checkName + ' not found';
         }
-     //   window.alert('Check cookie ' + this.checkName +
-     //        ' returned ' + this.cookieService.check(this.checkName));
     }
 }

@@ -9,7 +9,7 @@
     			<div class="col-xs-6">
     				<address>
     				<strong>Billed To:</strong><br>
-    					{{(user | async).firstName}} {{(user | async).lastName}}<br>
+    					{{(user | async)?.firstName}} {{(user | async)?.lastName}}<br>
     					1234 Main<br>
     					Apt. 4B<br>
     					Springfield, ST 54321
@@ -18,7 +18,7 @@
     			<div class="col-xs-6 text-right">
     				<address>
         			<strong>Shipped To:</strong><br>
-    					{{(user | async).firstName}} {{(user | async).lastName}}<br>
+    					{{(user | async)?.firstName}} {{(user | async)?.lastName}}<br>
     					1234 Main<br>
     					Apt. 4B<br>
     					Springfield, ST 54321
