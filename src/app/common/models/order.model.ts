@@ -10,4 +10,3 @@ export interface Order {
     shippingAddress?: Address;
     shoppingCart?: ShoppingCart;
 }
-
