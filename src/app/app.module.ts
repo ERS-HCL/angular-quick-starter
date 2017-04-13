@@ -52,7 +52,7 @@ import { PlanService } from './common/services/plan.service';
 import { AppStateService } from './common/services/app-state.service';
 
 import { RegisterGuard } from './common/guards/register.guard';
-import { CookieService } from 'angular2-cookie/services/cookies.service';
+// import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -70,7 +70,7 @@ const APP_PROVIDERS = [
   PlanService,
   AppStateService,
   RegisterGuard,
-  CookieService
+//  CookieService
 ];
 
 type StoreType = {

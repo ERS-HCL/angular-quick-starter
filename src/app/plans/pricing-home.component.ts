@@ -17,7 +17,7 @@ import { User } from '../common/models/user.model';
 import { PlanService } from '../common/services/plan.service';
 import { AppStateService } from '../common/services/app-state.service';
 import { Logger } from '../common/logging/default-log.service';
-import { CookieService } from 'angular2-cookie/core';
+// import { CookieService } from 'angular2-cookie/core';
 import * as _ from 'lodash';
 
 @Component({
@@ -52,14 +52,15 @@ export class PricingHomeComponent implements OnInit {
         private planService: PlanService,
         private appStateService: AppStateService,
         private router: Router,
-        private cookieService: CookieService) {
+        // private cookieService: CookieService
+        ) {
         this.counter = store.select('counter');
         this.user = store.select('user');
         this.plans = this.planService.plans;
         this.features = this.planService.features;
         this.timeout = 5000;
         this.cValue2 = '';
-        this.update();
+    //    this.update();
         this.user
             // filter only the situation where the UUID has been set in the store
             .filter((user: User) => user.UUID !== '')
@@ -104,7 +105,7 @@ export class PricingHomeComponent implements OnInit {
     public setUUID(timer: number) {
         this.appStateService.initUUID(timer);
     }
-
+/* Disabling CookieService as it is incompatible with the new Angular 2 updates
     public update() {
         this.cookies = this.cookieService.getAll();
         this.keys = Object.keys(this.cookies);
@@ -136,4 +137,5 @@ export class PricingHomeComponent implements OnInit {
             this.cValue2 = 'Cookie with name: ' + checkName + ' not found';
         }
     }
+    */
 }
