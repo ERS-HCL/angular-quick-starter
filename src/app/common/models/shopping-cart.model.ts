@@ -8,7 +8,7 @@ export interface ShoppingCart {
  */
 export interface LineItem {
     id?: string;                        // line item id
-    productName: string;                // product name 
+    productName: string;                // product name
     productId: string;                  // product id
     description?: string;                // product description
     unitPrice?: string;                 // product variant unit price
