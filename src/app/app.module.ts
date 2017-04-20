@@ -52,7 +52,7 @@ import { PlanService } from './common/services/plan.service';
 import { AppStateService } from './common/services/app-state.service';
 
 import { RegisterGuard } from './common/guards/register.guard';
-// import { CookieService } from 'angular2-cookie/services/cookies.service';
+import { CookieModule } from 'ngx-cookie';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -128,7 +128,8 @@ export function rootReducer(state: any, action: any) {
     StoreModule.provideStore(rootReducer, initialReducerState),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule,
-    EffectsModule.run(FeaturesEffects)
+    EffectsModule.run(FeaturesEffects),
+    CookieModule.forRoot()
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
