@@ -10,11 +10,13 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
+const AssetsPlugin = require('assets-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 /**
  * Webpack Constants
  */
@@ -133,6 +135,29 @@ module.exports = function (options) {
 
     plugins: [
 
+      new AssetsPlugin({
+        path: helpers.root('dist'),
+        filename: 'webpack-assets.json',
+        prettyPrint: true
+      }),
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        title: METADATA.title,
+        chunksSortMode: 'dependency',
+        metadata: METADATA,
+        inject: 'head'
+      }),
+
+      /*
+       * Plugin: ScriptExtHtmlWebpackPlugin
+       * Description: Enhances html-webpack-plugin functionality
+       * with different deployment options for your scripts including:
+       *
+       * See: https://github.com/numical/script-ext-html-webpack-plugin
+       */
+      new ScriptExtHtmlWebpackPlugin({
+        defaultAttribute: 'defer'
+      }),
       /**
        * Plugin: DefinePlugin
        * Description: Define free variables.

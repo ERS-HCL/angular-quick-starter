@@ -204,12 +204,12 @@ module.exports = function (options) {
      * See: http://webpack.github.io/docs/configuration.html#plugins
      */
     plugins: [
-      new AssetsPlugin({
+/*      new AssetsPlugin({
         path: helpers.root('dist'),
         filename: 'webpack-assets.json',
         prettyPrint: true
       }),
-
+*/
       /*
        * Plugin: ForkCheckerPlugin
        * Description: Do type checking in a separate process, so webpack don't need to wait.
@@ -278,14 +278,14 @@ module.exports = function (options) {
        *
        * See: https://github.com/ampedandwired/html-webpack-plugin
        */
-      new HtmlWebpackPlugin({
+ /*     new HtmlWebpackPlugin({
         template: 'src/index.html',
         title: METADATA.title,
         chunksSortMode: 'dependency',
         metadata: METADATA,
         inject: 'head'
       }),
-
+*/
       /*
        * Plugin: ScriptExtHtmlWebpackPlugin
        * Description: Enhances html-webpack-plugin functionality
@@ -293,10 +293,10 @@ module.exports = function (options) {
        *
        * See: https://github.com/numical/script-ext-html-webpack-plugin
        */
-      new ScriptExtHtmlWebpackPlugin({
+  /*    new ScriptExtHtmlWebpackPlugin({
         defaultAttribute: 'defer'
       }),
-
+*/
       /*
        * Plugin: HtmlElementsPlugin
        * Description: Generate html tags based on javascript maps.

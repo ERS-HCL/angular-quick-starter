@@ -9,6 +9,7 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
+const AssetsPlugin = require('assets-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
@@ -17,7 +18,8 @@ const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplaceme
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
-
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 /**
  * Webpack Constants
  */
@@ -30,7 +32,8 @@ const METADATA = webpackMerge(commonConfig({
   host: HOST,
   port: PORT,
   ENV: ENV,
-  HMR: false
+  HMR: false,
+  baseUrl: '/shop/entertainment/'
 });
 
 module.exports = function (env) {
@@ -58,8 +61,9 @@ module.exports = function (env) {
        *
        * See: http://webpack.github.io/docs/configuration.html#output-path
        */
-      path: helpers.root('dist'),
+      path: helpers.root('dist/shop/entertainment/'),
 
+      publicPath: '/shop/entertainment/',
       /**
        * Specifies the name of each output file on disk.
        * IMPORTANT: You must not specify an absolute path here!
@@ -125,6 +129,29 @@ module.exports = function (env) {
      */
     plugins: [
 
+      new AssetsPlugin({
+        path: helpers.root('dist/shop/entertainment/'),
+        filename: 'webpack-assets.json',
+        prettyPrint: true
+      }),
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        title: METADATA.title,
+        chunksSortMode: 'dependency',
+        metadata: METADATA,
+        inject: 'head'
+      }),
+
+      /*
+       * Plugin: ScriptExtHtmlWebpackPlugin
+       * Description: Enhances html-webpack-plugin functionality
+       * with different deployment options for your scripts including:
+       *
+       * See: https://github.com/numical/script-ext-html-webpack-plugin
+       */
+      new ScriptExtHtmlWebpackPlugin({
+        defaultAttribute: 'defer'
+      }),
       /**
        * Webpack plugin to optimize a JavaScript file for faster initial load
        * by wrapping eagerly-invoked functions.
