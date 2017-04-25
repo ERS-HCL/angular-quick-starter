@@ -11,6 +11,10 @@ import {
   ConnectionBackend, RequestOptions, RequestMethod, BaseRequestOptions
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
 // Load the implementations that should be tested
 import { AppComponent } from './app.component';
 import { AppState } from './app.service';
@@ -62,13 +66,14 @@ describe(`App`, () => {
       declarations: [AppComponent],
       schemas: [NO_ERRORS_SCHEMA],
       imports: [
+        HttpModule,
         StoreModule.provideStore(rootReducer, initialReducerState)
       ],
       providers: [AppState,
         PlanService,
         AppStateService,
         RegisterGuard,
-        BaseRequestOptions,
+     /*   BaseRequestOptions,
         ConnectionBackend,
         MockBackend,
         {
@@ -77,7 +82,7 @@ describe(`App`, () => {
             return new Http(backend, defaultOptions);
           },
           deps: [MockBackend, BaseRequestOptions]
-        },
+        },*/
         [
           {
             provide: Logger,
