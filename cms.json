@@ -1,0 +1,8 @@
+{
+    "cms": {
+        "demo1": {
+            "title": "Demo Timer",
+            "buttonText": "Set new UUID"
+        }
+    }
+}

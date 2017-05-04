@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading">Time out</div>
+            <div class="panel-heading">${cms.demo1.title}</div>
             <div class="panel-body">
                 <strong>UUID:</strong><br>{{(user | async)?.UUID}}<br>
                 <strong>Timer Message:</strong><br>{{ message }}<br>
@@ -12,7 +12,7 @@
                         <input type="number" class="form-control" name="timeout" [(ngModel)]="timeout" #vartimeout="ngModel" required min="2000">
                         <small [hidden]="vartimeout.valid || (vartimeout.pristine && !f.submitted)" class="text-danger"> Number is required. </small>
                     </div>
-                    <button type="submit" class="btn btn-default" [disabled]="!f.valid">Set new UUID</button>
+                    <button type="submit" class="btn btn-default" [disabled]="!f.valid">${cms.demo1.buttonText}</button>
                 </form>
             </div>
         </div>
