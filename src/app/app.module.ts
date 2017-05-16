@@ -99,7 +99,8 @@ const initialReducerState = {
         user: userInitState,
         order: orderInitState
       };
-const appReducer = compose(localStorageSync({keys: ['user'], rehydrate : true}), combineReducers)(reducers);
+const appReducer = compose(
+  localStorageSync({keys: ['user'], rehydrate : true}), combineReducers)(reducers);
 
 export function rootReducer(state: any, action: any) {
   return appReducer(state, action);
