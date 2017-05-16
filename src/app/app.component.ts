@@ -1,4 +1,4 @@
-/*
+/**
  * Angular 2 decorators and services
  */
 import {
@@ -15,7 +15,9 @@ import { AppStore } from './common/models/appstore.model';
 import { ShoppingCart } from './common/models/shopping-cart.model';
 import { Utils } from './common/utils';
 import { Logger } from './common/logging/default-log.service';
-/*
+
+
+/**
  * App Component
  * Top Level Component
  */
@@ -80,7 +82,7 @@ export class AppComponent implements OnInit {
 
 }
 
-/*
+/**
  * Please review the https://github.com/AngularClass/angular2-examples/ repo for
  * more angular app examples that you may copy/paste
  * (The examples may not be updated as quickly. Please open an issue on github for us to update it)

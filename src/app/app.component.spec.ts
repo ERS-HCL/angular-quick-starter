@@ -15,7 +15,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-// Load the implementations that should be tested
+/**
+ * Load the implementations that should be tested
+ */
 import { AppComponent } from './app.component';
 import { AppState } from './app.service';
 import { PlanService } from './common/services/plan.service';
@@ -50,7 +52,8 @@ const initialReducerState = {
   user: userInitState,
   order: orderInitState
 };
-const appReducer = compose(localStorageSync(['user'], true), combineReducers)(reducers);
+const appReducer = compose(
+  localStorageSync({keys: ['user'], rehydrate : true}), combineReducers)(reducers);
 
 export function rootReducer(state: any, action: any) {
   return appReducer(state, action);
@@ -60,7 +63,9 @@ describe(`App`, () => {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
-  // async beforeEach
+  /**
+   * async beforeEach
+   */
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
@@ -90,15 +95,25 @@ describe(`App`, () => {
           }
         ]]
     })
-      .compileComponents(); // compile template and css
+
+    /**
+     * Compile template and css
+     */
+    .compileComponents();
+
   }));
 
-  // synchronous beforeEach
+  /**
+   * Synchronous beforeEach
+   */
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     comp = fixture.componentInstance;
 
-    fixture.detectChanges(); // trigger initial data binding
+    /**
+     * Trigger initial data binding
+     */
+    fixture.detectChanges();
   });
 
   it(`should be readly initialized`, () => {
