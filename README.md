@@ -24,6 +24,17 @@
 * CMS integration (headless) with build time template updates with CMS content
 * End to End shopping experience workflow Products/Pricing/Cart/Registration Form/Invoice based on the redux pattern , using highly performant Observables 
 
+### Reference Usecase
+
+* An online subscription plan which the user can view the features and the pricing details , select one or more plans and add it to the cart , view and modify the cart contents and then proceed to register his details before checkout.
+* Catalog – An online product plan with a set of features and related pricing 
+* Product , Features , Plans
+* User
+1) Views the plans , features and then selects one or more plans and adds them to the cart
+2) The cart can be viewed and modified
+3) Once the cart has items added the user can proceed to register himself and adding address details
+* Patterns : Modules, LazyLoading, Web Components, Smart Components, Redux Store , Reducers, Page Routing Guards, Reactive Forms, API Access, Event Emitters, Observables, Conditional Templates, i18n Pipes, Validators
+
 ### Quick start
 **Make sure you have Node version >= 6.0 and NPM >= 3**
 
