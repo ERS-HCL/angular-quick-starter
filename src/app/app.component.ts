@@ -16,7 +16,6 @@ import { ShoppingCart } from './common/models/shopping-cart.model';
 import { Utils } from './common/utils';
 import { Logger } from './common/logging/default-log.service';
 
-
 /**
  * App Component
  * Top Level Component
