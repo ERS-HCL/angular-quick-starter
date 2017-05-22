@@ -77,7 +77,7 @@ type StoreType = {
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
 
   ],
