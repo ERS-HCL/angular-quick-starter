@@ -12,6 +12,7 @@ import {
 } from '@angular/material';
 
 import { SettingsDialogComponent } from './settingsDialog.component';
+import { Dog } from './dog.model';
 
 @Component({
   // The selector is what angular internally uses
@@ -27,7 +28,7 @@ import { SettingsDialogComponent } from './settingsDialog.component';
 })
 export class LeashedInHomeComponent implements OnInit {
 
-  public dogs = [
+  public dogs: Dog[] = [
     { rows: 2, name: 'Mal', human: 'Jeremy', age: 5},
     { rows: 1, name: 'Molly', human: 'David', age: 5},
     { rows: 1, name: 'Sophie', human: 'Alex', age: 8},
@@ -40,7 +41,7 @@ export class LeashedInHomeComponent implements OnInit {
   ];
 
   @ViewChild('sidenav') public sidenav: MdSidenav;
-  public currentDog = {};
+  public currentDog: Dog = {};
   public isDarkTheme = false;
   constructor( public dialog: MdDialog,
                public vcr: ViewContainerRef) {}
@@ -54,7 +55,7 @@ export class LeashedInHomeComponent implements OnInit {
     config.viewContainerRef = this.vcr;
     this.dialog.open(SettingsDialogComponent, config);
   }
-  public showDog(dog) {
+  public showDog(dog: Dog) {
     this.currentDog = dog;
     this.sidenav.open();
   }

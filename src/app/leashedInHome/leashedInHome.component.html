@@ -17,9 +17,9 @@
     <md-sidenav align="end" mode="side" #sidenav>
       <md-tab-group>
         <md-tab label="Details">
-          <p>Name: {{currentDog.name}}</p>
-          <p>Human: {{currentDog.human}}</p>
-          <p>Age: {{currentDog.age}}</p>
+          <p>Name: {{currentDog?.name}}</p>
+          <p>Human: {{currentDog?.human}}</p>
+          <p>Age: {{currentDog?.age}}</p>
           <button md-raised-button (click)="sidenav.close()" color="accent">CLOSE</button>
         </md-tab>
         <md-tab label="Feed">
