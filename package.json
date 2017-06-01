@@ -89,8 +89,8 @@
     "ie-shim": "^0.1.0",
     "material": "^0.1.1",
     "reflect-metadata": "^0.1.10",
-    "rxjs": "5.0.2",
-    "zone.js": "~0.8.5"
+    "rxjs": "~5.0.2",
+    "zone.js": "0.8.5"
   },
   "devDependencies": {
     "@angular/compiler-cli": "~4.0.3",
@@ -134,6 +134,7 @@
     "npm-run-all": "^4.0.2",
     "optimize-js-plugin": "0.0.4",
     "parse5": "^3.0.2",
+    "preload-webpack-plugin": "^1.2.2",
     "protractor": "^5.1.1",
     "raw-loader": "0.5.1",
     "rimraf": "~2.6.1",
