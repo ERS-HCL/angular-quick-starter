@@ -24,21 +24,6 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
 //const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
-/*
- * CMS Replacement loader
- */
-const properties = require('../cms.json');
-const StringReplacePlugin = require('string-replace-webpack-plugin');
-const string_replacement_loader = StringReplacePlugin.replace({
-  replacements: [
-    {
-      pattern: /\${(.*)}/g,
-      replacement: function (match, p1, offset, string) {
-        return eval('properties.' + p1);
-      }
-    }
-  ]});
-
 /**
  * Webpack Constants
  */
@@ -201,7 +186,7 @@ module.exports = function (options) {
          */
         {
           test: /\.html$/,
-          use: ['raw-loader',string_replacement_loader],
+          use: 'raw-loader',
           exclude: [helpers.root('src/index.html')]
         },
 
@@ -236,12 +221,6 @@ module.exports = function (options) {
       //   filename: 'webpack-assets.json',
       //   prettyPrint: true
       // }),
-       /*
-       * Plugin: StringReplacePlugin
-       * Description: String replacement plugin used for content replacement during pre-compilation 
-       * of the HTML templates.
-       */
-      new StringReplacePlugin(),
 
       /**
        * Plugin: ForkCheckerPlugin
