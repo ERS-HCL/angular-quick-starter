@@ -60,7 +60,17 @@ import '../styles/headings.css';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+ /* [
+    {
+      provide: Logger,
+      useClass: ConsoleLogService
+    }
+  ],*/
+ // PlanService,
+//  AppStateService,
+ // RegisterGuard,
+//  CookieService
 ];
 
 type StoreType = {
@@ -116,7 +126,12 @@ export function rootReducer(state: any, action: any) {
     ReactiveFormsModule,
     HttpModule,
     CoreModule,
+  //  PlansModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    StoreModule.provideStore(rootReducer, initialReducerState),
+    StoreDevtoolsModule.instrumentStore(instrumentOptions),
+    StoreLogMonitorModule,
+   // EffectsModule.run(FeaturesEffects)
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
