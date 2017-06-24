@@ -38,7 +38,6 @@ import { compose } from '@ngrx/core/compose';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { EffectsModule } from '@ngrx/effects';
 import { counterReducer } from './common/reducers/counter';
 import { planInitState, planReducer } from './common/reducers/plan';
 import { featuresInitState, featuresReducer } from './common/reducers/features';
@@ -130,8 +129,7 @@ export function rootReducer(state: any, action: any) {
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     StoreModule.provideStore(rootReducer, initialReducerState),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
-    StoreLogMonitorModule,
- //   EffectsModule.run(FeaturesEffects)
+    StoreLogMonitorModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
