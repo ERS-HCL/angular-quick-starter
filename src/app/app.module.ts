@@ -61,13 +61,14 @@ import '../styles/headings.css';
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
   AppState,
- /* [
+  AppStateService,
+  [
     {
       provide: Logger,
       useClass: ConsoleLogService
     }
-  ],*/
-  PlanService,
+  ],
+//  PlanService,
 //  AppStateService,
  // RegisterGuard,
 //  CookieService
@@ -131,7 +132,7 @@ export function rootReducer(state: any, action: any) {
     StoreModule.provideStore(rootReducer, initialReducerState),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule,
-    EffectsModule.run(FeaturesEffects)
+ //   EffectsModule.run(FeaturesEffects)
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
