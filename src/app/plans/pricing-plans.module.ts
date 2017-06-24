@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { routing } from './pricing-plans.routes';
 import { PricingPlansComponent } from './pricing-plans.component';
 import { PlanOptionsComponent } from './plan-options.component';
-import { PlanService } from '../common/services/plan.service';
+// import { PlanService } from '../common/services/plan.service';
 import { CartModule } from '../cart/cart.module';
 
 console.log('`Plans` bundle loaded asynchronously');

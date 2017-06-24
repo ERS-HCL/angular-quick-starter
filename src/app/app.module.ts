@@ -68,9 +68,8 @@ const APP_PROVIDERS = [
       useClass: ConsoleLogService
     }
   ],
-//  PlanService,
-//  AppStateService,
- // RegisterGuard,
+  PlanService,
+  RegisterGuard,
 //  CookieService
 ];
 

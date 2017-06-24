@@ -100,7 +100,7 @@
     "lodash": "^4.17.4",
     "ngrx-store-localstorage": "0.1.5",
     "reflect-metadata": "^0.1.10",
-    "rxjs": "~5.0.2",
+    "rxjs": "^5.0.3",
     "zone.js": "0.8.5"
   },
   "devDependencies": {

@@ -16,7 +16,7 @@ export class FeaturesEffects {
         .switchMap(() => this.planService.loadFeatures()
             // If successful, dispatch success action with result
             .map((payload) => ({ type: ADD_FEATURES, payload }))
-            .catch(() => Observable.of({ type: 'LOAD_FEATURES_FAILED' }))
+         //   .catch(() => Observable.of({ type: 'LOAD_FEATURES_FAILED' }))
         );
 
     constructor(
