@@ -4,6 +4,7 @@ import { AppStore } from '../models/appstore.model';
 import { Utils } from '../utils';
 import { User } from '../models/user.model';
 import { UPDATE_UUID, RESET_UUID } from '../reducers/user';
+import 'rxjs/add/operator/take';
 
 @Injectable()
 export class AppStateService {

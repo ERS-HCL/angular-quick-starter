@@ -6,8 +6,16 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
+import { Store, Action } from '@ngrx/store';
 import { AppState } from './app.service';
-
+import { PlanService } from './common/services/plan.service';
+import { ADD_PLANS } from './common/reducers/plan';
+import { ADD_FEATURES } from './common/reducers/features';
+import { AppStore } from './common/models/appstore.model';
+import { ShoppingCart } from './common/models/shopping-cart.model';
+import { Utils } from './common/utils';
+import { Logger } from './common/logging/default-log.service';
+import 'rxjs/add/operator/map';
 /**
  * App Component
  * Top Level Component
@@ -18,45 +26,7 @@ import { AppState } from './app.service';
   styleUrls: [
     './app.component.css'
   ],
-  template: `
-    <nav>
-      <a [routerLink]=" ['./'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Index
-      </a>
-      <a [routerLink]=" ['./home'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Home
-      </a>
-      <a [routerLink]=" ['./detail'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Detail
-      </a>
-      <a [routerLink]=" ['./barrel'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        Barrel
-      </a>
-      <a [routerLink]=" ['./about'] "
-        routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
-        About
-      </a>
-    </nav>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
-    <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
-    </footer>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
@@ -64,11 +34,55 @@ export class AppComponent implements OnInit {
   public url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState
-  ) {}
+    public appState: AppState,
+    public planService: PlanService,
+    private store: Store<AppStore>,
+    private logger: Logger
+  ) { }
 
   public ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    this.loadPlans();
+    this.initCart();
+  }
+
+  public loadPlans() {
+    this.planService.loadPlans('bundle')
+      .map((payload) => ({ type: ADD_PLANS, payload }))
+      .subscribe(
+      (plans) => {
+       this.store.dispatch(plans);
+       this.planService.loadFeatures()
+          // If successful, dispatch success action with result
+          .map((payload) => ({ type: ADD_FEATURES, payload }))
+          .subscribe((features) => {
+            this.store.dispatch(features);
+          }
+          );
+      },
+      (error) => {
+        this.logger.error('Unable to load plans: ' + error.message);
+      },
+      () => {
+        // called after success or error callback
+      }
+      );
+  }
+
+  /*   CART_EVENTS
+  *  Create Cart and add it to the user state
+  *  Call this when the user state does not have the cart existing
+  */
+  public initCart(): ShoppingCart {
+    let cart: ShoppingCart;
+    cart = {
+      id: Utils.UUID() + '-' + new Date().getTime(),
+      lineItems: []
+    };
+    this.store.dispatch({ type: 'CREATE_CART', payload: cart });
+    // Demonstrate local storage sync
+    this.store.dispatch({ type: 'UPDATE_CARTID', payload: cart.id });
+    return cart;
   }
 
 }

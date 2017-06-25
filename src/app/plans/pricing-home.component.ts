@@ -61,7 +61,7 @@ export class PricingHomeComponent implements OnInit {
         this.timeout = 5000;
         this.cValue2 = '';
     //    this.update();
-        this.user
+    /*    this.user
             // filter only the situation where the UUID has been set in the store
             .filter((user: User) => user.UUID !== '')
             .map((user: User) => Observable.timer(user.expiry))
@@ -74,6 +74,8 @@ export class PricingHomeComponent implements OnInit {
                 this.appStateService.resetUUID();
                 alert('UUID has now expired! please login');
             });
+
+            */
     }
 
     public increment() {

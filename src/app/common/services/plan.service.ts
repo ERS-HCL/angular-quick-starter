@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { AppStore } from '../models/appstore.model';
 import { Plan, Feature, FeatureMap } from '../models/catalog.model';
-
+import 'rxjs/add/operator/map';
 /**
  * PricingService for
  *     getting the price list for online services
