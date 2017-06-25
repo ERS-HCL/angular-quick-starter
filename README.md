@@ -10,15 +10,16 @@
 > This has been enhanced with the learning and experiences implementing Angular based solutions
 
 * Added NGRX and NGRX LocalStorageSync and setup the infrastructure for the same
-* Added NGRX store utilities � Get the current snapshot of the store
+* Added NGRX store utilities
+* Get the current snapshot of the store
 * intl polyfill for i18n Angular 2/4 APIs / pipes
-* profile based environment parameters infrastructure � dev, test, prod
+* profile based environment parameters infrastructure - dev, test, prod
 * Json-server infrastructure
-* Utilities added � Jquery, lodash
+* Utilities added - Jquery, lodash
 * Added an end-to-end reference implementation with product view , selection ,cart view and registration form (with validation) , lazy loading, page guards, mock API access , Reactive templates and forms using Observables, Modules creation , Smart and Dump Component separation, routing, conditional templates, Data Model, Redux Reducers , Effects etc.
-* This will help the developers have a reference of the �right� way of implementing � First time right
+* This will help the developers have a reference of the "right way of implementing " - First time right
 * UI CSS/Styling
-* Bootstrap 3/JQuery support � on dev-bootstrap branch
+* Bootstrap 3/JQuery support
 * A reference implementation for
 * Session Timeout (Set a timer based on an expiry date/time and get a warning/alert on completion)
 * CMS integration (headless) with build time template updates with CMS content
@@ -27,7 +28,7 @@
 ### Reference Usecase
 
 * An online subscription plan which the user can view the features and the pricing details , select one or more plans and add it to the cart , view and modify the cart contents and then proceed to register his details before checkout.
-* Catalog � An online product plan with a set of features and related pricing 
+* Catalog - An online product plan with a set of features and related pricing 
 * Product , Features , Plans
 * User
 1) Views the plans , features and then selects one or more plans and adds them to the cart
