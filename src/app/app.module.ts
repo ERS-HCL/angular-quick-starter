@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import 'intl';
 import {
   NgModule,
   ApplicationRef,
@@ -120,16 +122,17 @@ export function rootReducer(state: any, action: any) {
    * Import Angular's modules.
    */
   imports: [
+    CommonModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     CoreModule,
-  //  PlansModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     StoreModule.provideStore(rootReducer, initialReducerState),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
-    StoreLogMonitorModule
+    StoreLogMonitorModule,
+    PlansModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
