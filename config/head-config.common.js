@@ -41,6 +41,13 @@ module.exports = {
     { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/assets/icon/favicon-16x16.png' },
 
     /**
+     * <link> tags for froala
+     */
+    { rel: 'stylesheet', href: '/assets/font-awesome/css/font-awesome.min.css' },
+    { rel: 'stylesheet', href: '/assets/froala-editor/css/froala_editor.pkgd.min.css' },
+    { rel: 'stylesheet', href: '/assets/froala-editor/css/froala_style.min.css' },
+
+    /**
      * <link> tags for a Web App Manifest
      */
     { rel: 'manifest', href: '/assets/manifest.json' }

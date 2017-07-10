@@ -1,5 +1,5 @@
 <div class="container">
- <!--   <div class="row">
+    <!--   <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">Time out</div>
             <div class="panel-body">
@@ -17,8 +17,16 @@
             </div>
         </div>
     </div> -->
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Time out</div>
+            <div class="panel-body">
+                <div [froalaEditor]>Hello, Froala!</div>
+            </div>
+        </div>
+    </div>
     <plan-details [plans]="plans | async" [features]="features | async" (selectionEvent)="onSelectionEvent($event)"></plan-details>
- <!--   <div class="row">
+    <!--   <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">Cookies</div>
             <div class="panel-body">

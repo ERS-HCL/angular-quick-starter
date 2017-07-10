@@ -55,6 +55,13 @@ import { AppStateService } from './common/services/app-state.service';
 import { RegisterGuard } from './common/guards/register.guard';
 // import { CookieService } from 'angular2-cookie/services/cookies.service';
 
+
+// Import the Froala Editor plugin.
+import 'froala-editor/js/froala_editor.pkgd.min.js';
+
+// Import Angular plugin.
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+
 import '../styles/styles.scss';
 import '../styles/headings.css';
 
@@ -128,6 +135,8 @@ export function rootReducer(state: any, action: any) {
     ReactiveFormsModule,
     HttpModule,
     CoreModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot(),
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
     StoreModule.provideStore(rootReducer, initialReducerState),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),

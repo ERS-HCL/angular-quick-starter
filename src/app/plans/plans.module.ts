@@ -7,6 +7,12 @@ import { PricingHomeComponent } from './pricing-home.component';
 import { PlanDetailsComponent } from './plan-details.component';
 import { PlanService } from '../common/services/plan.service';
 
+// Import the Froala Editor plugin.
+import 'froala-editor/js/froala_editor.pkgd.min.js';
+
+// Import Angular plugin.
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+
 @NgModule({
   declarations: [
     // Components / Directives/ Pipes
@@ -20,7 +26,8 @@ import { PlanService } from '../common/services/plan.service';
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ]
 })
 export class PlansModule {

@@ -22,6 +22,7 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ngcWebpack = require('ngc-webpack');
+const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 //const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 /**
@@ -63,8 +64,8 @@ module.exports = function (options) {
     entry: {
 
       'polyfills': './src/polyfills.browser.ts',
-      'main':      AOT ? './src/main.browser.aot.ts' :
-                  './src/main.browser.ts'
+      'main': AOT ? './src/main.browser.aot.ts' :
+        './src/main.browser.ts'
 
     },
 
@@ -290,9 +291,21 @@ module.exports = function (options) {
        */
       new CopyWebpackPlugin([
         { from: 'src/assets', to: 'assets' },
-        { from: 'src/meta'}
+        { from: 'src/meta' },
+        {
+          from: 'node_modules/froala-editor/css/',
+          to: 'assets/froala-editor/css/',
+        },
+        {
+          from: 'node_modules/font-awesome/css/font-awesome.min.css',
+          to: 'assets/font-awesome/css/font-awesome.min.css',
+        },
+        {
+          from: 'node_modules/font-awesome/fonts',
+          to: 'assets/font-awesome/fonts'
+        }
       ],
-        isProd ? { ignore: [ 'mock-data/**/*' ] } : undefined
+        isProd ? { ignore: ['mock-data/**/*'] } : undefined
       ),
 
       /*
@@ -419,6 +432,11 @@ module.exports = function (options) {
        * https://github.com/szrenwei/inline-manifest-webpack-plugin
        */
       new InlineManifestWebpackPlugin(),
+
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery"
+      }),
     ],
 
     /**
