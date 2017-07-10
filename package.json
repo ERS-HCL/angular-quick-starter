@@ -67,7 +67,7 @@
     "webdriver-manager": "webdriver-manager",
     "webdriver:start": "npm run webdriver-manager start",
     "webdriver:update": "webdriver-manager update",
-    "json-server": "json-server db.json --port 3001",
+    "json-server": "json-server --watch db.json --port 3001",
     "serve": "concurrently \"npm run json-server\" \"npm start\"",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "webpack": "node --max_old_space_size=4096 node_modules/webpack/bin/webpack.js"

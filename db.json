@@ -1,4 +1,7 @@
 {
+    "cms": [
+        { "id":0 , "buy-label": "BUY"}
+    ],
     "features": [
         {
             "id": "1",

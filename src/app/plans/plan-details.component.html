@@ -1,11 +1,24 @@
 <div class="row">
     <div class="col-xs-12 col-sm-offset-4 col-sm-8">
         <div class="row">
+            <div class="col-xs-4">
+                <button (click)="toggle()">Edit mode : {{isEditable}}</button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-4 my_planHeader" [class.my-plan1]="i==0" [class.my-plan2]="i==1" [class.my-plan3]="i==2" *ngFor="let plan of plans;let i=index">
                 <div class="my-planTitle">{{plan.name}}</div>
                 <div class="my-planPrice">{{plan.pricing | currency:'USD':true}}</div>
                 <div class="my-planDuration">{{plan.billing === 'monthly' ? 'per month':'annual'}}</div>
-                <a type="button" class="btn btn-default" (click)="selectedPlan(plan)">Buy</a>
+                <!-- <a type="button" class="btn btn-default" (click)="selectedPlan(plan)" [froalaEditor] [(froalaModel)]="buttonModel">Buy</a> -->
+                <!-- <a type="button" class="btn btn-default" [froalaEditor] [(froalaModel)]="buttonModel">Buy</a> -->
+                <div *ngIf="isEditable">
+                    <button class="btn btn-default" [froalaEditor] [(froalaModel)]="buttonModel" (froalaModelChange)=onChange($event)></button>
+                </div>
+                <div *ngIf="!isEditable">
+                    <button class="btn btn-default" (click)="selectedPlan(plan)" [froalaView]="buttonModel.innerHTML"></button>
+                </div>
+                <!--   <button id="edit" class="btn btn-default r-btn highlight text-small">Buy</button> -->
             </div>
         </div>
     </div>

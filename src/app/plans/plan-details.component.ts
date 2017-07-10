@@ -16,7 +16,19 @@ export class PlanDetailsComponent {
   @Input() public features: FeatureMap[];
   @Output() public selectionEvent = new EventEmitter();
 
+  public isEditable: boolean = true;
+
+  public toggle() {
+    this.isEditable = !this.isEditable;
+  }
+
+  public buttonModel: Object = {
+    innerHTML: 'Buy'
+  };
   public selectedPlan(plan: Plan): void {
-      this.selectionEvent.emit(plan);
+    this.selectionEvent.emit(plan);
+  }
+  public onChange($event) {
+    console.log($event.innerHTML);
   }
 }
