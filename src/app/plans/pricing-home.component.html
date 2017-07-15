@@ -25,6 +25,59 @@
             </div>
         </div>
     </div>
+    <div class="row" *ngIf="showCarousel">
+        <div class="panel panel-default">
+            <div class="panel-heading">Carousel</div>
+            <div class="panel-body">
+                <!--  <select (change)="onChange($event.target.value)">
+                <option *ngFor="let slidez of slides;" value={{slidez}}>
+                    {{slidez.text}}
+                </option>
+                </select>
+                <a id="froala-editor" [froalaEditor]="options" [ngModel]="currentSelection">{{currentSelection.text}}</a> -->
+              <!-- <div [froalaEditor]  [froalaModel]="getSlides()" (froalaModelChange)=onChange($event)></div> -->
+             <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let slidez of slides;let i = index;">
+                            <td>{{slidez.title}}</td>
+                            <td>
+                                <div>
+                                    <a id="{{i}}" [froalaEditor]="getOptions(i)" [froalaModel]="slides[i]">{{i}} {{slidez.title}}</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+
+                <carousel [interval]="NextPhotoInterval" [noWrap]="noLoopSlides">
+                    <slide *ngFor="let slidez of slides;let i = index;" [active]="slidez.active">
+                        <!--     <div>
+                            <a [froalaEditor]="options" [(froalaModel)]="slides[i]">{{slidez.text}}</a>
+                        </div> -->
+                        <img [src]="slidez.href" style="margin:auto;">
+
+                        <div class="carousel-caption">
+                            <h3 style="background-color: transparent;color: white;">Slide {{i + 1}}</h3>
+                            <p style="background-color: transparent;color: white;">{{slidez.title}}</p>
+                        <!--    <a id="{{i}}" [froalaEditor]="getOptions(i)" [(froalaModel)]="slides[i]" >{{i}} {{slidez.title}}</a>-->
+                        </div>
+                    </slide>
+                </carousel>
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-info" (click)="removeLastSlide()">Remove Last Slide
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <plan-details [plans]="plans | async" [features]="features | async" (selectionEvent)="onSelectionEvent($event)"></plan-details>
     <!--   <div class="row">
         <div class="panel panel-default">
