@@ -38,7 +38,7 @@ export class PricingHomeComponent implements OnInit {
     public plans: Observable<Plan[]>;
     public features: Observable<FeatureMap[]>;
     public timeout: number;
-    public showCarousel = false;
+    public showCarousel = true;
     public message: string;
     // public expiryDate: Date;
     public cookies: Object;
@@ -166,6 +166,14 @@ export class PricingHomeComponent implements OnInit {
 
     public onChange($event) {
         console.log($event);
+        let id: number =$event.id;
+        let innerHTML: string = $event.innerHTML;
+        let url: string = $event.href;
+        console.log(url);
+        (<SlideContent>this.slides[id]).href = url;
+        (<SlideContent>this.slides[id]).text = innerHTML;
+
+
     }
 
  /*   public onClick(i: number) {

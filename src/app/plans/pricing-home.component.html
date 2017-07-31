@@ -48,7 +48,7 @@
                             <td>{{slidez.title}}</td>
                             <td>
                                 <div>
-                                    <a id="{{i}}" [froalaEditor]="getOptions(i)" [froalaModel]="slides[i]">{{i}} {{slidez.title}}</a>
+                                    <a id="{{i}}" [froalaEditor]="getOptions(i)" [froalaModel]="slides[i]" (froalaModelChange)=onChange($event)>{{i}} {{slidez.title}}</a>
                                 </div>
                             </td>
                         </tr>
