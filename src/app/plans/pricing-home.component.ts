@@ -13,8 +13,10 @@ import { ADD_PLANS } from '../common/reducers/plan';
 import { LOAD_FEATURES } from '../common/effects/features.effects';
 import { Plan, Feature, FeatureMap, FeatureAvailability } from '../common/models/catalog.model';
 import { AppStore } from '../common/models/appstore.model';
+import { Quote } from '../common/models/quote.model';
 import { User } from '../common/models/user.model';
 import { PlanService } from '../common/services/plan.service';
+import { QuoteService } from '../common/services/quote.service';
 import { AppStateService } from '../common/services/app-state.service';
 import { Logger } from '../common/logging/default-log.service';
 // import { CookieService } from 'angular2-cookie/core';
@@ -31,13 +33,14 @@ import * as _ from 'lodash';
     templateUrl: './pricing-home.component.html'
 })
 export class PricingHomeComponent implements OnInit {
+    public quotes: Observable<Quote[]>;
     public counter: Observable<number>;
     public user: Observable<User>;
     public plans: Observable<Plan[]>;
     public features: Observable<FeatureMap[]>;
     public timeout: number;
     public message: string;
-    // public expiryDate: Date;
+    public reactiveDemo: boolean;
     public cookies: Object;
     public keys: string[];
     public cName: string;
@@ -50,32 +53,40 @@ export class PricingHomeComponent implements OnInit {
         private store: Store<AppStore>,
         private logger: Logger,
         private planService: PlanService,
+        public quoteService: QuoteService,
         private appStateService: AppStateService,
         private router: Router,
         // private cookieService: CookieService
-        ) {
+    ) {
         this.counter = store.select('counter');
         this.user = store.select('user');
         this.plans = this.planService.plans;
         this.features = this.planService.features;
         this.timeout = 5000;
         this.cValue2 = '';
-    //    this.update();
-    /*    this.user
-            // filter only the situation where the UUID has been set in the store
-            .filter((user: User) => user.UUID !== '')
-            .map((user: User) => Observable.timer(user.expiry))
-            .do((x: any) => { this.message = 'UUID changed! Timer has been reset .. '; })
-            // Ignore earlier timers and switch to the new timer
-            .switch()
-            // Timeout has expired so reset the UUID and logout the user
-            .subscribe((x) => {
-                this.message = 'UUID has now expired! Dispatching UUID reset event';
-                this.appStateService.resetUUID();
-                alert('UUID has now expired! please login');
-            });
+        this.reactiveDemo = false;
+        //    this.update();
+        /*    this.user
+                // filter only the situation where the UUID has been set in the store
+                .filter((user: User) => user.UUID !== '')
+                .map((user: User) => Observable.timer(user.expiry))
+                .do((x: any) => { this.message = 'UUID changed! Timer has been reset .. '; })
+                // Ignore earlier timers and switch to the new timer
+                .switch()
+                // Timeout has expired so reset the UUID and logout the user
+                .subscribe((x) => {
+                    this.message = 'UUID has now expired! Dispatching UUID reset event';
+                    this.appStateService.resetUUID();
+                    alert('UUID has now expired! please login');
+                });
+                */
+        if (this.reactiveDemo) {
+            this.loadQuotes();
+        }
+    }
 
-            */
+    public loadQuotes() {
+        this.quotes = this.quoteService.getQuotes();
     }
 
     public increment() {
@@ -107,37 +118,37 @@ export class PricingHomeComponent implements OnInit {
     public setUUID(timer: number) {
         this.appStateService.initUUID(timer);
     }
-/* Disabling CookieService as it is incompatible with the new Angular 2 updates
-    public update() {
-        this.cookies = this.cookieService.getAll();
-        this.keys = Object.keys(this.cookies);
-    }
-    public addCookie(cName: string, cValue: string) {
-        console.log('Adding: ', cName, cValue);
-        this.cookieService.put(cName, cValue);
-        this.update();
-    }
-    public removeCookie(rName: string) {
-        console.log('Removing: ', rName);
-        this.cookieService.remove(rName);
-        this.update();
-    }
-    public removeAll() {
-        console.log('Removing all cookies');
-        this.cookieService.removeAll();
-        this.update();
-    }
-
-    public checkCookie(checkName: string) {
-        console.log('Checking: ', checkName);
-        this.cValue2 = '';
-        let result: any = this.cookieService.get(checkName);
-      //  console.log(result);
-        if (result !== undefined) {
-            this.cValue2 = 'Value: ' + result;
-        } else {
-            this.cValue2 = 'Cookie with name: ' + checkName + ' not found';
+    /* Disabling CookieService as it is incompatible with the new Angular 2 updates
+        public update() {
+            this.cookies = this.cookieService.getAll();
+            this.keys = Object.keys(this.cookies);
         }
-    }
-    */
+        public addCookie(cName: string, cValue: string) {
+            console.log('Adding: ', cName, cValue);
+            this.cookieService.put(cName, cValue);
+            this.update();
+        }
+        public removeCookie(rName: string) {
+            console.log('Removing: ', rName);
+            this.cookieService.remove(rName);
+            this.update();
+        }
+        public removeAll() {
+            console.log('Removing all cookies');
+            this.cookieService.removeAll();
+            this.update();
+        }
+    
+        public checkCookie(checkName: string) {
+            console.log('Checking: ', checkName);
+            this.cValue2 = '';
+            let result: any = this.cookieService.get(checkName);
+          //  console.log(result);
+            if (result !== undefined) {
+                this.cValue2 = 'Value: ' + result;
+            } else {
+                this.cValue2 = 'Cookie with name: ' + checkName + ' not found';
+            }
+        }
+        */
 }

@@ -50,6 +50,7 @@ import { FeaturesEffects } from './common/effects/features.effects';
 import { ConsoleLogService } from './common/logging/console-log.service';
 import { Logger } from './common/logging/default-log.service';
 import { PlanService } from './common/services/plan.service';
+import { QuoteService } from './common/services/quote.service';
 import { AppStateService } from './common/services/app-state.service';
 
 import { RegisterGuard } from './common/guards/register.guard';
@@ -70,6 +71,7 @@ const APP_PROVIDERS = [
     }
   ],
   PlanService,
+  QuoteService,
   RegisterGuard,
 //  CookieService
 ];

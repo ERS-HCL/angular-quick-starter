@@ -63,6 +63,7 @@ declare var System: SystemJS;
 // Custom URLS
 declare var BASE_URL_PLANS: string;
 declare var BASE_URL_FEATURES: string;
+declare var BASE_URL_QUOTES: string;
 
 interface SystemJS {
   import: (path?: string) => Promise<any>;

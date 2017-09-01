@@ -200,6 +200,7 @@ module.exports = function (options) {
         },
         'BASE_URL_PLANS': JSON.stringify('http://localhost:3001/plans/'),
         'BASE_URL_FEATURES': JSON.stringify('http://localhost:3001/features/'),
+        'BASE_URL_QUOTES': JSON.stringify('http://localhost:8081/quotes'),
       }),
 
       /**

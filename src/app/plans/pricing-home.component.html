@@ -1,5 +1,5 @@
 <div class="container">
- <!--   <div class="row">
+  <!--   <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">Time out</div>
             <div class="panel-body">
@@ -17,8 +17,9 @@
             </div>
         </div>
     </div> -->
-    <plan-details [plans]="plans | async" [features]="features | async" (selectionEvent)="onSelectionEvent($event)"></plan-details>
- <!--   <div class="row">
+
+  <plan-details [plans]="plans | async" [features]="features | async" (selectionEvent)="onSelectionEvent($event)"></plan-details>
+  <!--   <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">Cookies</div>
             <div class="panel-body">
@@ -70,16 +71,40 @@
             </div>
         </div>
     </div> -->
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">NGRX Demo</div>
-            <div class="panel-body">
-                <button type="button" class="btn btn-default" (click)="increment()">Increment</button>
-                <span class="label label-primary">Current Count <span class="badge">{{ counter | async }}</span> </span>
-                <button type="button" class="btn btn-default" (click)="decrement()">Decrement</button>
-                <button type="button" class="btn btn-default" (click)="reset()">Reset Counter</button>
-            </div>
-        </div>
-
+  <div class="row" *ngIf="reactiveDemo">
+    <div class="panel panel-default">
+      <div class="panel-heading">Quotes</div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Price</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let quote of quotes | async">
+              <td>{{quote.ticker}}</td>
+              <td>{{quote.price}}</td>
+              <td>{{quote.instant | date:'mediumTime'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">Quotes</div>
+      <div class="panel-body">
+        <button type="button" class="btn btn-default" (click)="increment()">Increment</button>
+        <span class="label label-primary">Current Count <span class="badge">{{ counter | async }}</span> </span>
+        <button type="button" class="btn btn-default" (click)="decrement()">Decrement</button>
+        <button type="button" class="btn btn-default" (click)="reset()">Reset Counter</button>
+      </div>
+    </div>
+
+  </div>
 </div>
