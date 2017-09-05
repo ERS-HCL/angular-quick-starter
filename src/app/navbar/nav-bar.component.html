@@ -1,58 +1,33 @@
-<div class="container-fluid">
-    <!-- Second navbar for profile settings -->
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-4">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-                <a  class="fa-hover navbar-brand" 
-                    [routerLink]=" ['./'] " 
-                    routerLinkActive="active" 
-                    [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-telegram" aria-hidden="true"></i> Brand</a>
-            </div>
+<nav class="navbar-fixed-top navbar-default navbar">
+  <div class="row header">
+    <div class="pull-right" style="color: #FFFFFF"><i class="fa fa-bank"></i> Points <b
+        style="font-size:10px;">(200) </b>&nbsp;&nbsp;&nbsp; <i class="fa fa-shopping-cart"></i> Shopping Cart&nbsp;
+      <b
+        style="font-size:10px;">({{ (shoppingCart|async)?.lineItems.length }})</b>
+    </div>
+  </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="navbar-collapse-4">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a 
-                            [routerLink]=" ['./home'] " 
-                            routerLinkActive="active" 
-                            [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-                    <li>
-                        <a 
-                            [routerLink]=" ['./plans'] " 
-                            routerLinkActive="active" 
-                            [routerLinkActiveOptions]="{exact: true}"><i class="fa fa-list" aria-hidden="true"></i> Plans</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse4" aria-expanded="false"
-                            aria-controls="nav-collapse4"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
-                    </li>
-                </ul>
-                <ul class="collapse nav navbar-nav nav-collapse slide-down" role="search" id="nav-collapse4">
-                    <li><a href="#">Support</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img class="img-circle" src="https://randomuser.me/api/portraits/thumb/men/83.jpg"
-                                alt="maridlcrmn" width="20" /> Maridlcrmn <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">My profile</a></li>
-                            <li><a href="#">Favorited</a></li>
-                            <li><a href="#">Settings</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <!-- /.navbar -->
-</div>
-<!-- /.container-fluid -->
+
+  <div class="row menu">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+        aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+      <img src="http://s2.postimg.org/fpyp99z45/RM2.jpg" style="margin-left:37px;height:45px;margin-right:20px">
+    </div>
+
+    <div class="container">
+      <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
