@@ -10,7 +10,7 @@
 
 > This has been enhanced with the learning and experiences implementing Angular based solutions
 
-* Added NGRX and NGRX LocalStorageSync and setup the infrastructure for the same
+* Redux Support : Added NGRX and NGRX LocalStorageSync and setup the infrastructure for the same
 * Added NGRX store utilities
 * Get the current snapshot of the store
 * intl polyfill for i18n Angular 2/4 APIs / pipes
@@ -21,7 +21,7 @@
 * This will help the developers have a reference of the "right way of implementing " - First time right
 * UI CSS/Styling
 * Bootstrap 3/JQuery support
-* A reference implementation for
+* A reference implementation for shopping cart
 * Session Timeout (Set a timer based on an expiry date/time and get a warning/alert on completion)
 * CMS integration (headless) with build time template updates with CMS content
 * End to End shopping experience workflow Products/Pricing/Cart/Registration Form/Invoice based on the redux pattern , using highly performant Observables 
