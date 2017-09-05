@@ -11,15 +11,15 @@ import { ActivatedRoute } from '@angular/router';
   template: `
     <h1>About</h1>
     <div>
-      For hot module reloading run
-      <pre>npm run start:hmr</pre>
+      Angular Quick Starter Project 
+      <br>
+      <i> with and end to end best practices implementation </i>
     </div>
     <div>
-      <h3>
-        patrick@AngularClass.com
-      </h3>
+      <p>
+      <i class="fa fa-envelope" aria-hidden="true"></i> tksukhu@gmail.com
+      </p>
     </div>
-    <pre>this.localState = {{ localState | json }}</pre>
   `
 })
 export class AboutComponent implements OnInit {

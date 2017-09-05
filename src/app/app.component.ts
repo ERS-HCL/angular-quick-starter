@@ -30,8 +30,8 @@ import 'rxjs/add/operator/map';
 })
 export class AppComponent implements OnInit {
   public angularclassLogo = 'assets/img/angularclass-avatar.png';
-  public name = 'Angular 2 Webpack Starter';
-  public url = 'https://twitter.com/AngularClass';
+  public name = 'Angular Quick Starter Seed';
+  public url = 'https://twitter.com/TarunKumarSukhu';
 
   constructor(
     public appState: AppState,

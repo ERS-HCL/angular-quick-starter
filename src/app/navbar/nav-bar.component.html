@@ -1,9 +1,7 @@
 <nav class="navbar-fixed-top navbar-default navbar">
   <div class="row header">
-    <div class="pull-right" style="color: #FFFFFF"><i class="fa fa-bank"></i> Points <b
-        style="font-size:10px;">(200) </b>&nbsp;&nbsp;&nbsp; <i class="fa fa-shopping-cart"></i> Shopping Cart&nbsp;
-      <b
-        style="font-size:10px;">({{ (shoppingCart|async)?.lineItems.length }})</b>
+    <div class="pull-right" style="color: #FFFFFF"><i class="fa fa-bank"></i> Points <b style="font-size:10px;">(200) </b>&nbsp;&nbsp;&nbsp; <i class="fa fa-shopping-cart"></i>      Shopping Cart&nbsp;
+      <b style="font-size:10px;">({{ (shoppingCart|async)?.lineItems.length }})</b>
     </div>
   </div>
 
@@ -17,15 +15,24 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-      <img src="http://s2.postimg.org/fpyp99z45/RM2.jpg" style="margin-left:37px;height:45px;margin-right:20px">
+      <img src="assets/img/cart-logo.png" style="margin-left:37px;height:45px;margin-right:20px">
     </div>
 
     <div class="container">
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a [routerLink]=" ['./home'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fa fa-home" aria-hidden="true"></i> Home</a>
+          </li>
+          <li>
+            <a [routerLink]=" ['./plans'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fa fa-list" aria-hidden="true"></i> Plans</a>
+          </li>
+          <li>
+            <a [routerLink]=" ['./about'] " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+          </li>
         </ul>
       </div>
     </div>
