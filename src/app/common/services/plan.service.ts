@@ -19,8 +19,8 @@ export class PlanService {
         private http: Http,
         public store: Store<AppStore>
     ) {
-        this.plans = <Observable<Plan[]>>store.select('plans');
-        this.features = <Observable<FeatureMap[]>>store.select('features');
+        this.plans = <Observable<Plan[]>> store.select('plans');
+        this.features = <Observable<FeatureMap[]>> store.select('features');
     }
 
     public loadPlans(type: string): Observable<Plan[]> {

@@ -60,6 +60,7 @@ dll/
 
 # Doc #
 /doc/
+/documentation/
 
 # IDE #
 .idea/

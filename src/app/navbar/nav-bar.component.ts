@@ -8,7 +8,6 @@ import { Store, Action } from '@ngrx/store';
 import { AppStore } from '../common/models/appstore.model';
 import { Observable } from 'rxjs/Rx';
 
-
 @Component({
   // The selector is what angular internally uses
   // for `document.querySelectorAll(selector)` in our index.html

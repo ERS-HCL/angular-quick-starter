@@ -138,7 +138,6 @@ export class PricingHomeComponent implements OnInit {
             this.cookieService.removeAll();
             this.update();
         }
-    
         public checkCookie(checkName: string) {
             console.log('Checking: ', checkName);
             this.cValue2 = '';
