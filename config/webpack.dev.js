@@ -142,7 +142,7 @@ module.exports = function (options) {
         'HMR': METADATA.HMR,
         'process.env.ENV': JSON.stringify(METADATA.ENV),
         'process.env.NODE_ENV': JSON.stringify(METADATA.ENV),
-        'process.env.HMR': METADATA.HMR
+        'process.env.HMR': METADATA.HMR,
         'BASE_URL_PLANS': JSON.stringify('http://localhost:3001/plans/'),
         'BASE_URL_FEATURES': JSON.stringify('http://localhost:3001/features/'),
         'BASE_URL_QUOTES': JSON.stringify('http://localhost:8081/quotes'),        
