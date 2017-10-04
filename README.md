@@ -161,11 +161,11 @@ npm run build:docker
 
 # Screenshots
 
-![alt text](screenshots/homepage.PNG "Home Page" | width=100)
-![alt text](screenshots/plans.PNG "Plans" | width=100)
-![alt text](screenshots/register.PNG "Registration" | width=100)
-![alt text](screenshots/invoice.PNG "Invoice" | width=100)
-![alt text](screenshots/redux.PNG "Redux Console" | width=100)
+![alt text](screenshots/homepage.PNG "Home Page"){:height="50%" width="50%"}
+![alt text](screenshots/plans.PNG "Plans"){:height="50%" width="50%"}
+![alt text](screenshots/register.PNG "Registration"){:height="50%" width="50%"}
+![alt text](screenshots/invoice.PNG "Invoice"){:height="50%" width="50%"}
+![alt text](screenshots/redux.PNG "Redux Console"){:height="50%" width="50%"}
 
 # License
  [MIT](/LICENSE)
