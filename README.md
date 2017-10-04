@@ -50,14 +50,11 @@ npm install
 # start the server
 ## start the json-server
 
-```
 npm run json-server
-```
+
 ## start the app server
 
-```
 npm start
-```
 
 # use Hot Module Replacement
 npm run server:dev:hmr
