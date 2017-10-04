@@ -160,7 +160,7 @@ npm run build:docker
 ```
 
 # Screenshots
-
+<img src="screenshots/homepage.PNG" width="48">
 ![alt text](screenshots/homepage.PNG "Home Page"){:height="24px" width="48px"}
 ![alt text](screenshots/plans.PNG "Plans"){:height="24px" width="48px"}
 ![alt text](screenshots/register.PNG "Registration"){:height="24px" width="48px"}
