@@ -162,6 +162,7 @@ npm run build:docker
 # Screenshots
 ![](screenshots/homepage.PNG "Home Page")
 ![](screenshots/plans.PNG "Plans")
+![](screenshots/addtocart.PNG "Cart")
 ![](screenshots/register.PNG "Registration")
 ![](screenshots/invoice.PNG "Invoice")
 ![](screenshots/redux.PNG "Redux Console")
